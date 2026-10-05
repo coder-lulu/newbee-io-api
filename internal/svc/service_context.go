@@ -91,6 +91,14 @@ func NewServiceContext(c config.Config) *ServiceContext {
 		ent.Debug(),
 	)
 
+	// Match the RPC service exclusions for shared CMDB reference tables.
+	hooks.AddExcludedTable("cmdb_asset_types")
+	hooks.AddExcludedTable("cmdb_templates")
+	hooks.AddExcludedTable("cmdb_attribute_definitions")
+	if err := hooks.QuickSetup(db); err != nil {
+		panic("IO API tenant hook initialization failed: " + err.Error())
+	}
+
 	// 3. 初始化RPC客户端 - 使用SystemContext拦截器支持系统级操作
 	coreRpcClient, err := zrpc.NewClient(c.CoreRpc, zrpc.WithUnaryClientInterceptor(hooks.SystemContextClientInterceptor()))
 	if err != nil {

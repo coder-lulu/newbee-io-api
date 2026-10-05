@@ -33,10 +33,10 @@ type BaseMsgResp struct {
 type PageInfo struct {
 	// Page number | 第几页
 	// min : 0
-	Page uint64 `json:"page" form:"page,default=1" validate:"number,gt=0"`
+	Page uint64 `json:"page,optional" form:"page,default=1" validate:"number,gt=0"`
 	// Page size | 单页数据行数
 	// max : 100000
-	PageSize uint64 `json:"pageSize" form:"pageSize,default=10" validate:"number,lt=100000"`
+	PageSize uint64 `json:"pageSize,optional" form:"pageSize,default=10" validate:"number,lt=100000"`
 }
 
 // Basic ID request | 基础ID参数请求
@@ -569,7 +569,7 @@ type WorkerMetricsInfo struct {
 	CreatedAt          int64   `json:"createdAt"`
 	UpdatedAt          int64   `json:"updatedAt"`
 	TenantId           uint64  `json:"tenantId"`
-	WorkerId           uint64  `json:"workerId"`
+	WorkerId           string  `json:"workerId"`
 	CpuUsagePercent    float64 `json:"cpuUsagePercent"`
 	MemoryUsagePercent float64 `json:"memoryUsagePercent"`
 	CurrentTaskCount   int64   `json:"currentTaskCount"`
@@ -580,7 +580,7 @@ type WorkerMetricsInfo struct {
 
 // swagger:model CreateWorkerMetricsReq
 type CreateWorkerMetricsReq struct {
-	WorkerId           uint64  `json:"workerId"`
+	WorkerId           string  `json:"workerId"`
 	CpuUsagePercent    float64 `json:"cpuUsagePercent"`
 	MemoryUsagePercent float64 `json:"memoryUsagePercent"`
 	CurrentTaskCount   int64   `json:"currentTaskCount"`
@@ -592,7 +592,7 @@ type CreateWorkerMetricsReq struct {
 type WorkerMetricsListReq struct {
 	Page      uint64  `json:"page"`
 	PageSize  uint64  `json:"pageSize"`
-	WorkerId  *uint64 `json:"workerId,optional"`
+	WorkerId  *string `json:"workerId,optional"`
 	StartTime *int64  `json:"startTime,optional"`
 	EndTime   *int64  `json:"endTime,optional"`
 }
@@ -749,9 +749,9 @@ type UpdateFieldMappingReq struct {
 // swagger:model GetFieldMappingListReq
 type GetFieldMappingListReq struct {
 	PageInfo
-	MappingName *string `form:"mappingName,optional"` // 名称过滤
-	MappingType *string `form:"mappingType,optional"` // 类型过滤
-	IsActive    *bool   `form:"isActive,optional"`    // 状态过滤
+	MappingName *string `form:"mappingName,optional" json:"mappingName,optional"` // 名称过滤
+	MappingType *string `form:"mappingType,optional" json:"mappingType,optional"` // 类型过滤
+	IsActive    *bool   `form:"isActive,optional" json:"isActive,optional"`       // 状态过滤
 }
 
 // 输入任务信息
@@ -775,6 +775,7 @@ type InputTaskInfo struct {
 	StartedAt   *int64 `json:"startedAt,optional"`   // 开始执行时间
 	CompletedAt *int64 `json:"completedAt,optional"` // 完成时间
 	// 处理统计
+	TotalRecords     int64 `json:"totalRecords"`     // 总记录数
 	ProcessedRecords int64 `json:"processedRecords"` // 已处理记录数
 	SuccessRecords   int64 `json:"successRecords"`   // 成功记录数
 	FailedRecords    int64 `json:"failedRecords"`    // 失败记录数
@@ -904,6 +905,7 @@ type OutputTaskInfo struct {
 	StartedAt   *int64 `json:"startedAt,optional"`   // 开始执行时间
 	CompletedAt *int64 `json:"completedAt,optional"` // 完成时间
 	// 处理统计
+	TotalRecords     int64  `json:"totalRecords"`     // 总记录数
 	ProcessedRecords int64  `json:"processedRecords"` // 已处理记录数
 	SuccessRecords   int64  `json:"successRecords"`   // 成功记录数
 	FailedRecords    int64  `json:"failedRecords"`    // 失败记录数
@@ -996,9 +998,9 @@ type UpdateOutputTaskReq struct {
 // swagger:model GetOutputTaskListReq
 type GetOutputTaskListReq struct {
 	PageInfo
-	Name       *string `form:"name,optional"`       // 名称过滤
-	OutputType *string `form:"outputType,optional"` // 类型过滤
-	TaskStatus *string `form:"taskStatus,optional"` // 状态过滤
+	Name       *string `form:"name,optional" json:"name,optional"`             // 名称过滤
+	OutputType *string `form:"outputType,optional" json:"outputType,optional"` // 类型过滤
+	TaskStatus *string `form:"taskStatus,optional" json:"taskStatus,optional"` // 状态过滤
 }
 
 // 任务日志信息
@@ -1047,9 +1049,9 @@ type CreateTaskLogReq struct {
 // swagger:model GetTaskLogListReq
 type GetTaskLogListReq struct {
 	PageInfo
-	TaskId   *uint64 `form:"taskId,optional"`   // 任务ID过滤
-	TaskType *string `form:"taskType,optional"` // 任务类型过滤
-	Level    *string `form:"level,optional"`    // 日志级别过滤
+	TaskId   *uint64 `form:"taskId,optional" json:"taskId,optional"`     // 任务ID过滤
+	TaskType *string `form:"taskType,optional" json:"taskType,optional"` // 任务类型过滤
+	Level    *string `form:"level,optional" json:"level,optional"`       // 日志级别过滤
 }
 
 // 映射日志信息
@@ -1096,6 +1098,6 @@ type CreateMappingLogReq struct {
 // swagger:model GetMappingLogListReq
 type GetMappingLogListReq struct {
 	PageInfo
-	FieldMappingId *uint64 `form:"fieldMappingId,optional"` // 字段映射ID过滤
-	Level          *string `form:"level,optional"`          // 日志级别过滤
+	FieldMappingId *uint64 `form:"fieldMappingId,optional" json:"fieldMappingId,optional"` // 字段映射ID过滤
+	Level          *string `form:"level,optional" json:"level,optional"`                   // 日志级别过滤
 }

@@ -7,6 +7,8 @@ import (
 	"net/http"
 
 	base "github.com/coder-lulu/newbee-io-api/internal/handler/base"
+	ciaudit "github.com/coder-lulu/newbee-io-api/internal/handler/ci_audit"
+	configread "github.com/coder-lulu/newbee-io-api/internal/handler/config"
 	data_target "github.com/coder-lulu/newbee-io-api/internal/handler/data_target"
 	discovery_pool "github.com/coder-lulu/newbee-io-api/internal/handler/discovery_pool"
 	discovery_template "github.com/coder-lulu/newbee-io-api/internal/handler/discovery_template"
@@ -23,6 +25,8 @@ import (
 )
 
 func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
+	server.AddRoutes([]rest.Route{{Method: http.MethodPost, Path: "/change-history/list", Handler: ciaudit.ListChangeHistoryHandler(serverCtx)}, {Method: http.MethodPost, Path: "/lifecycle-state/list", Handler: ciaudit.ListLifecycleStateHandler(serverCtx)}})
+	server.AddRoutes([]rest.Route{{Method: http.MethodPost, Path: "/config/list", Handler: configread.ListConfigHandler(serverCtx)}, {Method: http.MethodPost, Path: "/config/audit_log/list", Handler: configread.ListAuditLogHandler(serverCtx)}, {Method: http.MethodPost, Path: "/config/history/get", Handler: configread.GetConfigHistoryHandler(serverCtx)}, {Method: http.MethodPost, Path: "/config/get", Handler: configread.GetConfigHandler(serverCtx)}})
 	server.AddRoutes(
 		[]rest.Route{
 			{

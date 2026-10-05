@@ -4,7 +4,9 @@ import (
 	"context"
 
 	"github.com/coder-lulu/newbee-io-api/internal/svc"
+	"github.com/coder-lulu/newbee-io-api/internal/transform"
 	"github.com/coder-lulu/newbee-io-api/internal/types"
+	"github.com/coder-lulu/newbee-io-rpc/ioclient"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -24,7 +26,10 @@ func NewGetDataTargetByIdLogic(ctx context.Context, svcCtx *svc.ServiceContext) 
 }
 
 func (l *GetDataTargetByIdLogic) GetDataTargetById(req *types.IDReq) (resp *types.DataTargetInfo, err error) {
-	// todo: add your logic here and delete this line
-
-	return
+	data, err := l.svcCtx.IoRpc.GetDataTargetById(l.ctx, &ioclient.IDReq{Id: req.Id})
+	if err != nil {
+		return nil, err
+	}
+	item := transform.DataTarget(data)
+	return &item, nil
 }

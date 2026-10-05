@@ -4,7 +4,9 @@ import (
 	"context"
 
 	"github.com/coder-lulu/newbee-io-api/internal/svc"
+	"github.com/coder-lulu/newbee-io-api/internal/transform"
 	"github.com/coder-lulu/newbee-io-api/internal/types"
+	"github.com/coder-lulu/newbee-io-rpc/ioclient"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -24,7 +26,15 @@ func NewGetWorkerMetricsListLogic(ctx context.Context, svcCtx *svc.ServiceContex
 }
 
 func (l *GetWorkerMetricsListLogic) GetWorkerMetricsList(req *types.WorkerMetricsListReq) (resp *types.WorkerMetricsListResp, err error) {
-	// todo: add your logic here and delete this line
-
-	return
+	data, err := l.svcCtx.IoRpc.GetWorkerMetricsList(l.ctx, &ioclient.WorkerMetricsListReq{Page: req.Page, PageSize: req.PageSize, WorkerId: req.WorkerId})
+	if err != nil {
+		return nil, err
+	}
+	resp = &types.WorkerMetricsListResp{}
+	resp.Total = data.Total
+	resp.Data = make([]types.WorkerMetricsInfo, 0, len(data.Data))
+	for _, item := range data.Data {
+		resp.Data = append(resp.Data, transform.WorkerMetrics(item))
+	}
+	return resp, nil
 }

@@ -30,10 +30,10 @@ type BaseMsgResp {
 // The page request parameters | 列表请求参数
 type PageInfo {
     // Page number | 第几页
-    Page   uint64    `json:"page" form:"page,default=1" validate:"number,gt=0"`
+    Page   uint64    `json:"page,optional" form:"page,default=1" validate:"number,gt=0"`
 
     // Page size | 单页数据行数
-    PageSize  uint64    `json:"pageSize" form:"pageSize,default=10" validate:"number,lt=100000"`
+    PageSize  uint64    `json:"pageSize,optional" form:"pageSize,default=10" validate:"number,lt=100000"`
 }
 
 

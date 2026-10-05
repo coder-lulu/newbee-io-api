@@ -155,9 +155,9 @@ type UpdateFieldMappingReq {
 type GetFieldMappingListReq {
 	PageInfo
 
-	MappingName *string `form:"mappingName,optional"` // 名称过滤
-	MappingType *string `form:"mappingType,optional"` // 类型过滤
-	IsActive    *bool   `form:"isActive,optional"`    // 状态过滤
+	MappingName *string `form:"mappingName,optional" json:"mappingName,optional"` // 名称过滤
+	MappingType *string `form:"mappingType,optional" json:"mappingType,optional"` // 类型过滤
+	IsActive    *bool   `form:"isActive,optional" json:"isActive,optional"`    // 状态过滤
 }
 
 @server(

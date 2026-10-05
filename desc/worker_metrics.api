@@ -12,7 +12,7 @@ type WorkerMetricsInfo {
     CreatedAt           int64   `json:"createdAt"`
     UpdatedAt           int64   `json:"updatedAt"`
     TenantId            uint64  `json:"tenantId"`
-    WorkerId            uint64  `json:"workerId"`
+    WorkerId            string  `json:"workerId"`
     CpuUsagePercent     float64 `json:"cpuUsagePercent"`
     MemoryUsagePercent  float64 `json:"memoryUsagePercent"`
     CurrentTaskCount    int64   `json:"currentTaskCount"`
@@ -22,7 +22,7 @@ type WorkerMetricsInfo {
 }
 
 type CreateWorkerMetricsReq {
-    WorkerId            uint64  `json:"workerId"`
+    WorkerId            string  `json:"workerId"`
     CpuUsagePercent     float64 `json:"cpuUsagePercent"`
     MemoryUsagePercent  float64 `json:"memoryUsagePercent"`
     CurrentTaskCount    int64   `json:"currentTaskCount"`
@@ -33,7 +33,7 @@ type CreateWorkerMetricsReq {
 type WorkerMetricsListReq {
     Page       uint64  `json:"page"`
     PageSize   uint64  `json:"pageSize"`
-    WorkerId   *uint64 `json:"workerId,optional"`
+    WorkerId   *string `json:"workerId,optional"`
     StartTime  *int64  `json:"startTime,optional"`
     EndTime    *int64  `json:"endTime,optional"`
 }

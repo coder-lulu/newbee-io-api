@@ -4,7 +4,9 @@ import (
 	"context"
 
 	"github.com/coder-lulu/newbee-io-api/internal/svc"
+	"github.com/coder-lulu/newbee-io-api/internal/transform"
 	"github.com/coder-lulu/newbee-io-api/internal/types"
+	"github.com/coder-lulu/newbee-io-rpc/ioclient"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -24,7 +26,10 @@ func NewGetDiscoveryTemplateByIdLogic(ctx context.Context, svcCtx *svc.ServiceCo
 }
 
 func (l *GetDiscoveryTemplateByIdLogic) GetDiscoveryTemplateById(req *types.IDReq) (resp *types.DiscoveryTemplateInfo, err error) {
-	// todo: add your logic here and delete this line
-
-	return
+	data, err := l.svcCtx.IoRpc.GetDiscoveryTemplateById(l.ctx, &ioclient.IDReq{Id: req.Id})
+	if err != nil {
+		return nil, err
+	}
+	item := transform.DiscoveryTemplate(data)
+	return &item, nil
 }

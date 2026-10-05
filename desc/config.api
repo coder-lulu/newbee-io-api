@@ -1,0 +1,109 @@
+syntax = "v1"
+
+type ConfigItem {
+Id *uint64 `json:"id,optional"`
+TenantId *uint64 `json:"tenantId,optional"`
+ConfigKey *string `json:"configKey,optional"`
+ConfigValue *string `json:"configValue,optional"`
+ValueType *string `json:"valueType,optional"`
+Category *string `json:"category,optional"`
+ServiceName *string `json:"serviceName,optional"`
+Description *string `json:"description,optional"`
+DefaultValue *string `json:"defaultValue,optional"`
+Version *int64 `json:"version,optional"`
+Status *uint32 `json:"status,optional"`
+IsReadonly *bool `json:"isReadonly,optional"`
+IsSensitive *bool `json:"isSensitive,optional"`
+Scope *string `json:"scope,optional"`
+ConfigGroup *string `json:"configGroup,optional"`
+CreatedAt *int64 `json:"createdAt,optional"`
+UpdatedAt *int64 `json:"updatedAt,optional"`
+}
+type ConfigAuditLog {
+Id *uint64 `json:"id,optional"`
+TenantId *uint64 `json:"tenantId,optional"`
+ConfigKey *string `json:"configKey,optional"`
+OldValue *string `json:"oldValue,optional"`
+NewValue *string `json:"newValue,optional"`
+ChangeType *string `json:"changeType,optional"`
+ChangedBy *uint64 `json:"changedBy,optional"`
+ChangedByName *string `json:"changedByName,optional"`
+ServiceName *string `json:"serviceName,optional"`
+Category *string `json:"category,optional"`
+ConfigGroup *string `json:"configGroup,optional"`
+ChangeReason *string `json:"changeReason,optional"`
+IpAddress *string `json:"ipAddress,optional"`
+UserAgent *string `json:"userAgent,optional"`
+OldVersion *int64 `json:"oldVersion,optional"`
+NewVersion *int64 `json:"newVersion,optional"`
+IsRollback *bool `json:"isRollback,optional"`
+RollbackFromLogId *string `json:"rollbackFromLogId,optional"`
+CreatedAt *int64 `json:"createdAt,optional"`
+}
+type ListConfigReq {
+Page *uint64 `json:"page,optional"`
+PageSize *uint64 `json:"pageSize,optional"`
+ServiceName *string `json:"serviceName,optional"`
+Category *string `json:"category,optional"`
+ConfigGroup *string `json:"configGroup,optional"`
+Keyword *string `json:"keyword,optional"`
+}
+type ListConfigResp {
+Total *uint64 `json:"total,optional"`
+Data []ConfigItem `json:"data,optional"`
+}
+type ListAuditLogReq {
+Page *uint64 `json:"page,optional"`
+PageSize *uint64 `json:"pageSize,optional"`
+ConfigKey *string `json:"configKey,optional"`
+ChangeType *string `json:"changeType,optional"`
+StartTime *int64 `json:"startTime,optional"`
+EndTime *int64 `json:"endTime,optional"`
+}
+type ListAuditLogResp {
+Total *uint64 `json:"total,optional"`
+Data []ConfigAuditLog `json:"data,optional"`
+}
+type GetConfigHistoryReq {
+ConfigKey *string `json:"configKey,optional"`
+}
+type GetConfigHistoryResp {
+Data []ConfigAuditLog `json:"data,optional"`
+}
+type GetConfigReq {
+ConfigKey *string `json:"configKey,optional"`
+}
+type GetConfigResp {
+Data *ConfigItem `json:"data,optional"`
+}
+type ListConfigEnvelope {
+Code int `json:"code"`
+Msg string `json:"msg"`
+Data ListConfigResp `json:"data"`
+}
+type ListAuditLogEnvelope {
+Code int `json:"code"`
+Msg string `json:"msg"`
+Data ListAuditLogResp `json:"data"`
+}
+type GetConfigHistoryEnvelope {
+Code int `json:"code"`
+Msg string `json:"msg"`
+Data GetConfigHistoryResp `json:"data"`
+}
+type GetConfigEnvelope {
+Code int `json:"code"`
+Msg string `json:"msg"`
+Data GetConfigResp `json:"data"`
+}
+@server(group: config)
+service Io {
+@handler listConfig
+post /config/list (ListConfigReq) returns (ListConfigEnvelope)
+@handler listAuditLog
+post /config/audit_log/list (ListAuditLogReq) returns (ListAuditLogEnvelope)
+@handler getConfigHistory
+post /config/history/get (GetConfigHistoryReq) returns (GetConfigHistoryEnvelope)
+@handler getConfig
+post /config/get (GetConfigReq) returns (GetConfigEnvelope)
+}

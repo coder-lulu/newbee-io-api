@@ -27,6 +27,7 @@ type InputTaskInfo {
     CompletedAt  *int64 `json:"completedAt,optional"`  // 完成时间
     
     // 处理统计
+    TotalRecords int64 `json:"totalRecords"` // 总记录数
     ProcessedRecords int64 `json:"processedRecords"` // 已处理记录数
     SuccessRecords   int64 `json:"successRecords"`   // 成功记录数
     FailedRecords    int64 `json:"failedRecords"`    // 失败记录数

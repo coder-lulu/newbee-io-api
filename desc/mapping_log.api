@@ -44,8 +44,8 @@ type CreateMappingLogReq {
 type GetMappingLogListReq {
     PageInfo
     
-    FieldMappingId *uint64 `form:"fieldMappingId,optional"` // 字段映射ID过滤
-    Level          *string `form:"level,optional"`          // 日志级别过滤
+    FieldMappingId *uint64 `form:"fieldMappingId,optional" json:"fieldMappingId,optional"` // 字段映射ID过滤
+    Level          *string `form:"level,optional" json:"level,optional"`          // 日志级别过滤
 }
 
 @server(

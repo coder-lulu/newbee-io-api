@@ -46,9 +46,9 @@ type CreateTaskLogReq {
 type GetTaskLogListReq {
     PageInfo
     
-    TaskId   *uint64 `form:"taskId,optional"`   // 任务ID过滤
-    TaskType *string `form:"taskType,optional"` // 任务类型过滤
-    Level    *string `form:"level,optional"`    // 日志级别过滤
+    TaskId   *uint64 `form:"taskId,optional" json:"taskId,optional"`   // 任务ID过滤
+    TaskType *string `form:"taskType,optional" json:"taskType,optional"` // 任务类型过滤
+    Level    *string `form:"level,optional" json:"level,optional"`    // 日志级别过滤
 }
 
 @server(
