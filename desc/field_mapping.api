@@ -1,0 +1,186 @@
+syntax = "v1"
+
+import "base.api"
+
+// 字段映射信息
+type FieldMappingInfo {
+	BaseIDInfo
+
+	// 基础信息
+	MappingName string `json:"mappingName"` // 映射名称
+	Description string `json:"description"` // 映射描述
+	MappingType string `json:"mappingType"` // 映射类型: input, output, transform, validation
+	IsActive    bool   `json:"isActive"`    // 是否启用
+
+	// 源字段信息
+	SourceField     string `json:"sourceField"`     // 源字段名称
+	SourceFieldPath string `json:"sourceFieldPath"` // 源字段路径(支持嵌套)
+	SourceDataType  string `json:"sourceDataType"`  // 源数据类型
+	SourceFormat    string `json:"sourceFormat"`    // 源字段格式
+
+	// 目标字段信息
+	TargetField     string `json:"targetField"`     // 目标字段名称
+	TargetFieldPath string `json:"targetFieldPath"` // 目标字段路径(支持嵌套)
+	TargetDataType  string `json:"targetDataType"`  // 目标数据类型
+	TargetFormat    string `json:"targetFormat"`    // 目标字段格式
+
+	// 转换配置
+	TransformType   string `json:"transformType"`   // 转换类型: direct, format, calculate, lookup, conditional, custom
+	TransformConfig string `json:"transformConfig"` // 转换配置JSON
+
+	// 验证配置
+	DefaultValue    string `json:"defaultValue"`    // 默认值
+	AllowNull       bool   `json:"allowNull"`       // 允许空值
+	IsRequired      bool   `json:"isRequired"`      // 是否必填
+	ValidationRules string `json:"validationRules"` // 验证规则JSON数组
+	ValidationRegex string `json:"validationRegex"` // 验证正则表达式
+
+	// 查找表配置
+	LookupTable         string `json:"lookupTable"`         // 查找表JSON
+	LookupCaseSensitive bool   `json:"lookupCaseSensitive"` // 查找是否区分大小写
+
+	// 条件规则
+	ConditionRules string `json:"conditionRules"` // 条件规则JSON数组
+
+	// 优先级和排序
+	Priority  int `json:"priority"`  // 优先级
+	SortOrder int `json:"sortOrder"` // 排序顺序
+
+	// 关联信息
+	DiscoveryPoolId *uint64 `json:"discoveryPoolId,optional"` // 关联发现池ID
+	InputTaskId     *uint64 `json:"inputTaskId,optional"`     // 关联输入任务ID
+	OutputTaskId    *uint64 `json:"outputTaskId,optional"`    // 关联输出任务ID
+
+	// 使用统计
+	UsageCount   int64   `json:"usageCount"`           // 使用次数
+	SuccessCount int64   `json:"successCount"`         // 成功次数
+	FailedCount  int64   `json:"failedCount"`          // 失败次数
+	LastUsedAt   *int64  `json:"lastUsedAt,optional"`  // 最后使用时间
+	LastError    *string `json:"lastError,optional"`   // 最后错误信息
+	LastErrorAt  *int64  `json:"lastErrorAt,optional"` // 最后错误时间
+
+	// 版本控制
+	Version        string `json:"version"`        // 版本号
+	VersionHistory string `json:"versionHistory"` // 版本历史JSON数组
+
+	// 扩展元数据
+	Metadata string `json:"metadata"` // 扩展元数据JSON
+}
+
+// 字段映射列表响应
+type FieldMappingListResp {
+	BaseDataInfo
+	Data FieldMappingListData `json:"data"`
+}
+
+type FieldMappingListData {
+	BaseListInfo
+	Data []FieldMappingInfo `json:"data"`
+}
+
+// 字段映射信息响应
+type FieldMappingInfoResp {
+	BaseDataInfo
+	Data FieldMappingInfo `json:"data"`
+}
+
+// 创建字段映射请求
+type CreateFieldMappingReq {
+	MappingName         string  `json:"mappingName"`                  // 映射名称
+	Description         *string `json:"description,optional"`         // 映射描述
+	MappingType         string  `json:"mappingType"`                  // 映射类型
+	IsActive            *bool   `json:"isActive,optional"`            // 是否启用
+	SourceField         string  `json:"sourceField"`                  // 源字段名称
+	SourceFieldPath     *string `json:"sourceFieldPath,optional"`     // 源字段路径
+	SourceDataType      *string `json:"sourceDataType,optional"`      // 源数据类型
+	SourceFormat        *string `json:"sourceFormat,optional"`        // 源字段格式
+	TargetField         string  `json:"targetField"`                  // 目标字段名称
+	TargetFieldPath     *string `json:"targetFieldPath,optional"`     // 目标字段路径
+	TargetDataType      *string `json:"targetDataType,optional"`      // 目标数据类型
+	TargetFormat        *string `json:"targetFormat,optional"`        // 目标字段格式
+	TransformType       *string `json:"transformType,optional"`       // 转换类型
+	TransformConfig     *string `json:"transformConfig,optional"`     // 转换配置JSON
+	DefaultValue        *string `json:"defaultValue,optional"`        // 默认值
+	AllowNull           *bool   `json:"allowNull,optional"`           // 允许空值
+	IsRequired          *bool   `json:"isRequired,optional"`          // 是否必填
+	ValidationRules     *string `json:"validationRules,optional"`     // 验证规则
+	ValidationRegex     *string `json:"validationRegex,optional"`     // 验证正则
+	LookupTable         *string `json:"lookupTable,optional"`         // 查找表
+	LookupCaseSensitive *bool   `json:"lookupCaseSensitive,optional"` // 查找区分大小写
+	ConditionRules      *string `json:"conditionRules,optional"`      // 条件规则
+	Priority            *int    `json:"priority,optional"`            // 优先级
+	SortOrder           *int    `json:"sortOrder,optional"`           // 排序
+	DiscoveryPoolId     *uint64 `json:"discoveryPoolId,optional"`     // 关联发现池ID
+	InputTaskId         *uint64 `json:"inputTaskId,optional"`         // 关联输入任务ID
+	OutputTaskId        *uint64 `json:"outputTaskId,optional"`        // 关联输出任务ID
+	Version             *string `json:"version,optional"`             // 版本号
+	Metadata            *string `json:"metadata,optional"`            // 扩展元数据
+}
+
+// 更新字段映射请求
+type UpdateFieldMappingReq {
+	Id                  uint64  `json:"id"`                           // 字段映射ID
+	MappingName         *string `json:"mappingName,optional"`         // 映射名称
+	Description         *string `json:"description,optional"`         // 映射描述
+	MappingType         *string `json:"mappingType,optional"`         // 映射类型
+	IsActive            *bool   `json:"isActive,optional"`            // 是否启用
+	SourceField         *string `json:"sourceField,optional"`         // 源字段名称
+	SourceFieldPath     *string `json:"sourceFieldPath,optional"`     // 源字段路径
+	SourceDataType      *string `json:"sourceDataType,optional"`      // 源数据类型
+	SourceFormat        *string `json:"sourceFormat,optional"`        // 源字段格式
+	TargetField         *string `json:"targetField,optional"`         // 目标字段名称
+	TargetFieldPath     *string `json:"targetFieldPath,optional"`     // 目标字段路径
+	TargetDataType      *string `json:"targetDataType,optional"`      // 目标数据类型
+	TargetFormat        *string `json:"targetFormat,optional"`        // 目标字段格式
+	TransformType       *string `json:"transformType,optional"`       // 转换类型
+	TransformConfig     *string `json:"transformConfig,optional"`     // 转换配置JSON
+	DefaultValue        *string `json:"defaultValue,optional"`        // 默认值
+	AllowNull           *bool   `json:"allowNull,optional"`           // 允许空值
+	IsRequired          *bool   `json:"isRequired,optional"`          // 是否必填
+	ValidationRules     *string `json:"validationRules,optional"`     // 验证规则
+	ValidationRegex     *string `json:"validationRegex,optional"`     // 验证正则
+	LookupTable         *string `json:"lookupTable,optional"`         // 查找表
+	LookupCaseSensitive *bool   `json:"lookupCaseSensitive,optional"` // 查找区分大小写
+	ConditionRules      *string `json:"conditionRules,optional"`      // 条件规则
+	Priority            *int    `json:"priority,optional"`            // 优先级
+	SortOrder           *int    `json:"sortOrder,optional"`           // 排序
+	DiscoveryPoolId     *uint64 `json:"discoveryPoolId,optional"`     // 关联发现池ID
+	InputTaskId         *uint64 `json:"inputTaskId,optional"`         // 关联输入任务ID
+	OutputTaskId        *uint64 `json:"outputTaskId,optional"`        // 关联输出任务ID
+	Version             *string `json:"version,optional"`             // 版本号
+	Metadata            *string `json:"metadata,optional"`            // 扩展元数据
+}
+
+// 字段映射列表查询请求
+type GetFieldMappingListReq {
+	PageInfo
+
+	MappingName *string `form:"mappingName,optional"` // 名称过滤
+	MappingType *string `form:"mappingType,optional"` // 类型过滤
+	IsActive    *bool   `form:"isActive,optional"`    // 状态过滤
+}
+
+@server(
+	group: field_mapping
+)
+service Io {
+	// 创建字段映射
+	@handler createFieldMapping
+	post /field_mapping/create (CreateFieldMappingReq) returns (FieldMappingInfoResp)
+
+	// 更新字段映射
+	@handler updateFieldMapping
+	post /field_mapping/update (UpdateFieldMappingReq) returns (FieldMappingInfoResp)
+
+	// 删除字段映射
+	@handler deleteFieldMapping
+	post /field_mapping/delete (IDReq) returns (BaseMsgResp)
+
+	// 获取字段映射详情
+	@handler getFieldMapping
+	get /field_mapping/:id (IDPathReq) returns (FieldMappingInfoResp)
+
+	// 获取字段映射列表
+	@handler getFieldMappingList
+	get /field_mapping/list (GetFieldMappingListReq) returns (FieldMappingListResp)
+}

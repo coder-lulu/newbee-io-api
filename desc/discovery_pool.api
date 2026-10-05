@@ -1,0 +1,156 @@
+syntax = "v1"
+
+import "base.api"
+
+// 发现池信息
+type DiscoveryPoolInfo {
+    BaseIDInfo
+    
+    // 基础信息
+    Name         string  `json:"name"`         // 发现池名称
+    Description  string  `json:"description"`  // 发现池描述
+    DiscoveryType string `json:"discoveryType"` // 发现类型: file, api, sdk, builtin
+    PoolStatus   string  `json:"poolStatus"`   // 池状态: active, inactive, error, maintain
+    
+    // 配置信息
+    DiscoveryConfig string `json:"discoveryConfig"` // 发现配置JSON
+    Schedule        string                 `json:"schedule"`        // 调度表达式
+    BatchSize       int                    `json:"batchSize"`       // 批处理大小
+    ConcurrentLimit int                    `json:"concurrentLimit"` // 并发限制
+    
+    // 重试配置
+    MaxRetry      int `json:"maxRetry"`      // 最大重试次数
+    RetryInterval int `json:"retryInterval"` // 重试间隔
+    
+    // 字段映射
+    FieldMapping string `json:"fieldMapping"` // 字段映射配置JSON
+    
+    // 运行统计
+    TotalRuns   int64  `json:"totalRuns"`   // 总执行次数
+    SuccessRuns int64  `json:"successRuns"` // 成功执行次数
+    FailedRuns  int64  `json:"failedRuns"`  // 失败执行次数
+    
+    // 最后执行信息
+    LastRunAt     *int64  `json:"lastRunAt,optional"`     // 最后执行时间
+    LastSuccessAt *int64  `json:"lastSuccessAt,optional"` // 最后成功时间
+    LastError     *string `json:"lastError,optional"`     // 最后错误信息
+    
+    // 审核流程
+    ApprovalStatus  string  `json:"approvalStatus"`           // 审核状态: pending, approved, rejected
+    ApprovedBy      *uint64 `json:"approvedBy,optional"`      // 审核人ID
+    ApprovedAt      *int64  `json:"approvedAt,optional"`      // 审核时间
+    RejectionReason *string `json:"rejectionReason,optional"` // 拒绝原因
+    
+    // 扩展元数据
+    Metadata string `json:"metadata"` // 扩展元数据JSON
+}
+
+// 发现池列表响应
+type DiscoveryPoolListResp {
+    BaseDataInfo
+    Data DiscoveryPoolListData `json:"data"`
+}
+
+type DiscoveryPoolListData {
+    BaseListInfo
+    Data []DiscoveryPoolInfo `json:"data"`
+}
+
+// 发现池信息响应
+type DiscoveryPoolInfoResp {
+    BaseDataInfo
+    Data DiscoveryPoolInfo `json:"data"`
+}
+
+// 创建发现池请求
+type CreateDiscoveryPoolReq {
+    Name            string  `json:"name"`                     // 发现池名称
+    Description     *string `json:"description,optional"`     // 发现池描述
+    DiscoveryType   string  `json:"discoveryType"`            // 发现类型
+    DiscoveryConfig *string `json:"discoveryConfig,optional"` // 发现配置JSON
+    Schedule        *string `json:"schedule,optional"`        // 调度表达式
+    BatchSize       *int    `json:"batchSize,optional"`       // 批处理大小
+    ConcurrentLimit *int    `json:"concurrentLimit,optional"` // 并发限制
+    MaxRetry        *int    `json:"maxRetry,optional"`        // 最大重试次数
+    RetryInterval   *int    `json:"retryInterval,optional"`   // 重试间隔
+    FieldMapping    *string `json:"fieldMapping,optional"`    // 字段映射配置JSON
+    Metadata        *string `json:"metadata,optional"`        // 扩展元数据JSON
+}
+
+// 更新发现池请求
+type UpdateDiscoveryPoolReq {
+    Id              uint64  `json:"id"`                       // 发现池ID
+    Name            *string `json:"name,optional"`            // 发现池名称
+    Description     *string `json:"description,optional"`     // 发现池描述
+    DiscoveryType   *string `json:"discoveryType,optional"`   // 发现类型
+    DiscoveryConfig *string `json:"discoveryConfig,optional"` // 发现配置JSON
+    Schedule        *string `json:"schedule,optional"`        // 调度表达式
+    BatchSize       *int    `json:"batchSize,optional"`       // 批处理大小
+    ConcurrentLimit *int    `json:"concurrentLimit,optional"` // 并发限制
+    MaxRetry        *int    `json:"maxRetry,optional"`        // 最大重试次数
+    RetryInterval   *int    `json:"retryInterval,optional"`   // 重试间隔
+    FieldMapping    *string `json:"fieldMapping,optional"`    // 字段映射配置JSON
+    Metadata        *string `json:"metadata,optional"`        // 扩展元数据JSON
+}
+
+// 发现池列表查询请求
+type GetDiscoveryPoolListReq {
+    PageInfo
+    
+    Name           *string `json:"name,optional"`           // 名称过滤
+    DiscoveryType  *string `json:"discoveryType,optional"`  // 发现类型过滤
+    PoolStatus     *string `json:"poolStatus,optional"`     // 状态过滤
+    ApprovalStatus *string `json:"approvalStatus,optional"` // 审核状态过滤
+}
+
+// 审核发现池请求
+type ApproveDiscoveryPoolReq {
+    Id     uint64  `json:"id"`              // 发现池ID
+    Action string  `json:"action"`          // 审核动作: approve, reject
+    Reason *string `json:"reason,optional"` // 拒绝原因(拒绝时必填)
+}
+
+@server(
+    group: discovery_pool
+)
+service Io {
+    // 创建发现池
+    @handler createDiscoveryPool
+    post /discovery_pool/create (CreateDiscoveryPoolReq) returns (DiscoveryPoolInfoResp)
+    
+    // 更新发现池
+    @handler updateDiscoveryPool
+    post /discovery_pool/update (UpdateDiscoveryPoolReq) returns (DiscoveryPoolInfoResp)
+    
+    // 删除发现池
+    @handler deleteDiscoveryPool
+    post /discovery_pool/delete (IDReq) returns (BaseMsgResp)
+    
+    // 获取发现池详情
+    @handler getDiscoveryPool
+    get /discovery_pool/:id (IDPathReq) returns (DiscoveryPoolInfoResp)
+    
+    // 获取发现池列表
+    @handler getDiscoveryPoolList
+    post /discovery_pool/list (GetDiscoveryPoolListReq) returns (DiscoveryPoolListResp)
+    
+    // 启用发现池
+    @handler enableDiscoveryPool
+    post /discovery_pool/enable (IDReq) returns (BaseMsgResp)
+    
+    // 禁用发现池
+    @handler disableDiscoveryPool
+    post /discovery_pool/disable (IDReq) returns (BaseMsgResp)
+    
+    // 手动触发发现池执行
+    @handler triggerDiscoveryPool
+    post /discovery_pool/trigger (IDReq) returns (BaseMsgResp)
+    
+    // 获取发现池统计信息
+    @handler getDiscoveryPoolStats
+    get /discovery_pool/stats/:id (IDPathReq) returns (DiscoveryPoolInfoResp)
+    
+    // 审核发现池
+    @handler approveDiscoveryPool
+    post /discovery_pool/approve (ApproveDiscoveryPoolReq) returns (BaseMsgResp)
+}

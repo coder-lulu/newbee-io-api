@@ -1,0 +1,101 @@
+syntax = "v1"
+
+info (
+	title:   "Discovery Provider API"
+	desc:    "发现Provider管理API"
+	author:  "NewBee"
+	version: "v1.0"
+)
+
+type ParameterDefinition {
+	Name         string      `json:"name"`
+	Label        string      `json:"label"`
+	Type         string      `json:"type"`
+	Required     bool        `json:"required"`
+	DefaultValue interface{} `json:"defaultValue,omitempty"`
+	Placeholder  string      `json:"placeholder,omitempty"`
+	Options      []string    `json:"options,omitempty"`
+	Description  string      `json:"description,omitempty"`
+}
+
+type FieldDefinition {
+	Name        string `json:"name"`
+	Label       string `json:"label"`
+	DataType    string `json:"dataType"`
+	Required    bool   `json:"required"`
+	Description string `json:"description,omitempty"`
+	Example     string `json:"example,omitempty"`
+}
+
+type ProviderMetadata {
+	Id          string `json:"id"`
+	Name        string `json:"name"`
+	Category    string `json:"category"`
+	Description string `json:"description,omitempty"`
+	Version     string `json:"version,omitempty"`
+	Icon        string `json:"icon,omitempty"`
+}
+
+type ProviderSchemaInfo {
+	Id              string                `json:"id"`
+	ProviderId      string                `json:"providerId"`
+	ProviderName    string                `json:"providerName"`
+	Category        string                `json:"category"`
+	Description     string                `json:"description,omitempty"`
+	Version         string                `json:"version,omitempty"`
+	IconUrl         string                `json:"iconUrl,omitempty"`
+	ParameterSchema []ParameterDefinition `json:"parameterSchema"`
+	FieldSchema     []FieldDefinition     `json:"fieldSchema"`
+	IsActive        bool                  `json:"isActive"`
+	IsBuiltin       bool                  `json:"isBuiltin"`
+	ExecutionMode   string                `json:"executionMode"`
+}
+
+type ListProvidersResp {
+	Code uint32             `json:"code"`
+	Msg  string             `json:"msg"`
+	Data []ProviderMetadata `json:"data"`
+}
+
+type GetProviderSchemaResp {
+	Code uint32              `json:"code"`
+	Msg  string              `json:"msg"`
+	Data *ProviderSchemaInfo `json:"data"`
+}
+
+type TestConnectionReq {
+	ProviderId string                 `json:"providerId"`
+	Config     map[string]interface{} `json:"config"`
+}
+
+type TestConnectionData {
+	Success bool   `json:"success"`
+	Message string `json:"message,omitempty"`
+}
+
+type TestConnectionResp {
+	Code uint32              `json:"code"`
+	Msg  string              `json:"msg"`
+	Data *TestConnectionData `json:"data"`
+}
+
+@server (
+	group: discoveryprovider
+)
+service Io {
+	@doc "获取所有发现Provider列表"
+	@handler listDiscoveryProviders
+	post /discoveryprovider/list_discovery_providers returns (ListProvidersResp)
+
+	@doc "获取指定Provider的Schema"
+	@handler getProviderSchema
+	post /discoveryprovider/get_provider_schema (GetProviderSchemaReq) returns (GetProviderSchemaResp)
+
+	@doc "测试Provider连接"
+	@handler testProviderConnection
+	post /discoveryprovider/test_provider_connection (TestConnectionReq) returns (TestConnectionResp)
+}
+
+type GetProviderSchemaReq {
+	ProviderId string `json:"provider_id"`
+}

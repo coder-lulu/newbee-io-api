@@ -1,0 +1,58 @@
+syntax = "v1"
+
+info(
+    title: "Worker监控指标"
+    desc: "Worker监控指标管理接口"
+    author: "NewBee"
+    version: "v1.0"
+)
+
+type WorkerMetricsInfo {
+    Id                  uint64  `json:"id"`
+    CreatedAt           int64   `json:"createdAt"`
+    UpdatedAt           int64   `json:"updatedAt"`
+    TenantId            uint64  `json:"tenantId"`
+    WorkerId            uint64  `json:"workerId"`
+    CpuUsagePercent     float64 `json:"cpuUsagePercent"`
+    MemoryUsagePercent  float64 `json:"memoryUsagePercent"`
+    CurrentTaskCount    int64   `json:"currentTaskCount"`
+    ThroughputRate      float64 `json:"throughputRate"`
+    MetricTime          int64   `json:"metricTime"`
+    Metadata            *string `json:"metadata,optional"`
+}
+
+type CreateWorkerMetricsReq {
+    WorkerId            uint64  `json:"workerId"`
+    CpuUsagePercent     float64 `json:"cpuUsagePercent"`
+    MemoryUsagePercent  float64 `json:"memoryUsagePercent"`
+    CurrentTaskCount    int64   `json:"currentTaskCount"`
+    ThroughputRate      float64 `json:"throughputRate"`
+    Metadata            *string `json:"metadata,optional"`
+}
+
+type WorkerMetricsListReq {
+    Page       uint64  `json:"page"`
+    PageSize   uint64  `json:"pageSize"`
+    WorkerId   *uint64 `json:"workerId,optional"`
+    StartTime  *int64  `json:"startTime,optional"`
+    EndTime    *int64  `json:"endTime,optional"`
+}
+
+type WorkerMetricsListResp {
+    Total uint64              `json:"total"`
+    Data  []WorkerMetricsInfo `json:"data"`
+}
+
+@server(
+    group: worker_metrics
+)
+service Io {
+    @handler createWorkerMetrics
+    post /worker_metrics/create (CreateWorkerMetricsReq) returns (BaseMsgResp)
+    
+    @handler getWorkerMetricsList
+    post /worker_metrics/list (WorkerMetricsListReq) returns (WorkerMetricsListResp)
+    
+    @handler getWorkerMetricsById
+    post /worker_metrics/info (IDReq) returns (WorkerMetricsInfo)
+}

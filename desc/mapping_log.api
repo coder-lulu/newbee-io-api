@@ -1,0 +1,70 @@
+syntax = "v1"
+
+import "base.api"
+
+// 映射日志信息
+type MappingLogInfo {
+    BaseIDInfo
+    
+    // 关联信息
+    FieldMappingId uint64 `json:"fieldMappingId"` // 字段映射ID
+    
+    // 日志信息
+    Level   string `json:"level"`   // 日志级别: debug, info, warn, error
+    Message string `json:"message"` // 日志消息
+    Details string `json:"details"` // 详细信息JSON
+}
+
+// 映射日志列表响应
+type MappingLogListResp {
+    BaseDataInfo
+    Data MappingLogListData `json:"data"`
+}
+
+type MappingLogListData {
+    BaseListInfo
+    Data []MappingLogInfo `json:"data"`
+}
+
+// 映射日志信息响应
+type MappingLogInfoResp {
+    BaseDataInfo
+    Data MappingLogInfo `json:"data"`
+}
+
+// 创建映射日志请求
+type CreateMappingLogReq {
+    FieldMappingId uint64  `json:"fieldMappingId"`     // 字段映射ID
+    Level          string  `json:"level"`              // 日志级别
+    Message        string  `json:"message"`            // 日志消息
+    Details        *string `json:"details,optional"`   // 详细信息
+}
+
+// 映射日志列表查询请求
+type GetMappingLogListReq {
+    PageInfo
+    
+    FieldMappingId *uint64 `form:"fieldMappingId,optional"` // 字段映射ID过滤
+    Level          *string `form:"level,optional"`          // 日志级别过滤
+}
+
+@server(
+    group: mapping_log
+)
+service Io {
+    // 创建映射日志
+    @handler createMappingLog
+    post /mapping_log/create (CreateMappingLogReq) returns (MappingLogInfoResp)
+    
+    // 删除映射日志
+    @handler deleteMappingLog
+    post /mapping_log/delete (IDReq) returns (BaseMsgResp)
+    
+    // 获取映射日志详情
+    @handler getMappingLog
+    get /mapping_log/:id (IDPathReq) returns (MappingLogInfoResp)
+    
+    // 获取映射日志列表
+    @handler getMappingLogList
+    get /mapping_log/list (GetMappingLogListReq) returns (MappingLogListResp)
+}

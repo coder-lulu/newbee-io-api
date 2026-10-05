@@ -1,0 +1,91 @@
+syntax = "v1"
+
+info(
+    title: "发现模板管理"
+    desc: "发现模板管理接口"
+    author: "NewBee"
+    version: "v1.0"
+)
+
+type DiscoveryTemplateInfo {
+    Id                     uint64                 `json:"id"`
+    CreatedAt              int64                  `json:"createdAt"`
+    UpdatedAt              int64                  `json:"updatedAt"`
+    Status                 uint8                  `json:"status"`
+    TenantId               uint64                 `json:"tenantId"`
+    TemplateName           string                 `json:"templateName"`
+    TemplateCode           string                 `json:"templateCode"`
+    Description            *string                `json:"description,optional"`
+    Version                string                 `json:"version"`
+    TemplateType           string                 `json:"templateType"`
+    DiscoveryConfig        *string                `json:"discoveryConfig,optional"`
+    FieldMappingTemplates  *string                `json:"fieldMappingTemplates,optional"`
+    ValidationRules        *string                `json:"validationRules,optional"`
+    IsPublic               bool                   `json:"isPublic"`
+    IsSystem               bool                   `json:"isSystem"`
+    UsageCount             int64                  `json:"usageCount"`
+    Tags                   *string                `json:"tags,optional"`
+    Metadata               *string                `json:"metadata,optional"`
+}
+
+type CreateDiscoveryTemplateReq {
+    TemplateName          string                 `json:"templateName"`
+    TemplateCode          string                 `json:"templateCode"`
+    Description           *string                `json:"description,optional"`
+    Version               *string                `json:"version,optional"`
+    TemplateType          *string                `json:"templateType,optional"`
+    DiscoveryConfig       *string                `json:"discoveryConfig,optional"`
+    FieldMappingTemplates *string                `json:"fieldMappingTemplates,optional"`
+    ValidationRules       *string                `json:"validationRules,optional"`
+    IsPublic              *bool                  `json:"isPublic,optional"`
+    Tags                  *string                `json:"tags,optional"`
+    Metadata              *string                `json:"metadata,optional"`
+}
+
+type UpdateDiscoveryTemplateReq {
+    Id                    uint64                 `json:"id"`
+    TemplateName          *string                `json:"templateName,optional"`
+    Description           *string                `json:"description,optional"`
+    Version               *string                `json:"version,optional"`
+    TemplateType          *string                `json:"templateType,optional"`
+    DiscoveryConfig       *string                `json:"discoveryConfig,optional"`
+    FieldMappingTemplates *string                `json:"fieldMappingTemplates,optional"`
+    ValidationRules       *string                `json:"validationRules,optional"`
+    IsPublic              *bool                  `json:"isPublic,optional"`
+    Tags                  *string                `json:"tags,optional"`
+    Metadata              *string                `json:"metadata,optional"`
+}
+
+type DiscoveryTemplateListReq {
+    Page         uint64  `json:"page"`
+    PageSize     uint64  `json:"pageSize"`
+    TemplateType *string `json:"templateType,optional"`
+    IsPublic     *bool   `json:"isPublic,optional"`
+    IsSystem     *bool   `json:"isSystem,optional"`
+    Keyword      *string `json:"keyword,optional"`
+}
+
+type DiscoveryTemplateListResp {
+    Total uint64                   `json:"total"`
+    Data  []DiscoveryTemplateInfo  `json:"data"`
+}
+
+@server(
+    group: discovery_template
+)
+service Io {
+    @handler createDiscoveryTemplate
+    post /discovery_template/create (CreateDiscoveryTemplateReq) returns (BaseMsgResp)
+    
+    @handler updateDiscoveryTemplate
+    post /discovery_template/update (UpdateDiscoveryTemplateReq) returns (BaseMsgResp)
+    
+    @handler deleteDiscoveryTemplate
+    post /discovery_template/delete (IDReq) returns (BaseMsgResp)
+    
+    @handler getDiscoveryTemplateById
+    post /discovery_template/info (IDReq) returns (DiscoveryTemplateInfo)
+    
+    @handler getDiscoveryTemplateList
+    post /discovery_template/list (DiscoveryTemplateListReq) returns (DiscoveryTemplateListResp)
+}

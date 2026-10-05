@@ -1,0 +1,79 @@
+syntax = "v1"
+
+info(
+    title: "数据目标管理"
+    desc: "数据目标管理接口"
+    author: "NewBee"
+    version: "v1.0"
+)
+
+type DataTargetInfo {
+    Id               uint64  `json:"id"`
+    CreatedAt        int64   `json:"createdAt"`
+    UpdatedAt        int64   `json:"updatedAt"`
+    Status           uint8   `json:"status"`
+    TenantId         uint64  `json:"tenantId"`
+    TargetName       string  `json:"targetName"`
+    TargetType       string  `json:"targetType"`
+    TargetSchema     *string `json:"targetSchema,optional"`
+    ValidationRules  *string `json:"validationRules,optional"`
+    UniqueKeys       *string `json:"uniqueKeys,optional"`
+    ConnectionConfig *string `json:"connectionConfig,optional"`
+    Description      *string `json:"description,optional"`
+    Metadata         *string `json:"metadata,optional"`
+}
+
+type CreateDataTargetReq {
+    TargetName       string  `json:"targetName"`
+    TargetType       *string `json:"targetType,optional"`
+    TargetSchema     *string `json:"targetSchema,optional"`
+    ValidationRules  *string `json:"validationRules,optional"`
+    UniqueKeys       *string `json:"uniqueKeys,optional"`
+    ConnectionConfig *string `json:"connectionConfig,optional"`
+    Description      *string `json:"description,optional"`
+    Metadata         *string `json:"metadata,optional"`
+}
+
+type UpdateDataTargetReq {
+    Id               uint64  `json:"id"`
+    TargetName       *string `json:"targetName,optional"`
+    TargetType       *string `json:"targetType,optional"`
+    TargetSchema     *string `json:"targetSchema,optional"`
+    ValidationRules  *string `json:"validationRules,optional"`
+    UniqueKeys       *string `json:"uniqueKeys,optional"`
+    ConnectionConfig *string `json:"connectionConfig,optional"`
+    Description      *string `json:"description,optional"`
+    Metadata         *string `json:"metadata,optional"`
+}
+
+type DataTargetListReq {
+    Page       uint64  `json:"page"`
+    PageSize   uint64  `json:"pageSize"`
+    TargetType *string `json:"targetType,optional"`
+    Keyword    *string `json:"keyword,optional"`
+}
+
+type DataTargetListResp {
+    Total uint64           `json:"total"`
+    Data  []DataTargetInfo `json:"data"`
+}
+
+@server(
+    group: data_target
+)
+service Io {
+    @handler createDataTarget
+    post /data_target/create (CreateDataTargetReq) returns (BaseMsgResp)
+    
+    @handler updateDataTarget
+    post /data_target/update (UpdateDataTargetReq) returns (BaseMsgResp)
+    
+    @handler deleteDataTarget
+    post /data_target/delete (IDReq) returns (BaseMsgResp)
+    
+    @handler getDataTargetById
+    post /data_target/info (IDReq) returns (DataTargetInfo)
+    
+    @handler getDataTargetList
+    post /data_target/list (DataTargetListReq) returns (DataTargetListResp)
+}

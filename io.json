@@ -1,0 +1,4782 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "Description: io service",
+    "title": "io",
+    "version": "0.0.1"
+  },
+  "host": "localhost:9501",
+  "basePath": "/",
+  "paths": {
+    "/data_target/create": {
+      "post": {
+        "tags": [
+          "data_target"
+        ],
+        "operationId": "CreateDataTarget"
+      }
+    },
+    "/data_target/delete": {
+      "post": {
+        "tags": [
+          "data_target"
+        ],
+        "operationId": "DeleteDataTarget"
+      }
+    },
+    "/data_target/info": {
+      "post": {
+        "tags": [
+          "data_target"
+        ],
+        "operationId": "GetDataTargetById"
+      }
+    },
+    "/data_target/list": {
+      "post": {
+        "tags": [
+          "data_target"
+        ],
+        "operationId": "GetDataTargetList"
+      }
+    },
+    "/data_target/update": {
+      "post": {
+        "tags": [
+          "data_target"
+        ],
+        "operationId": "UpdateDataTarget"
+      }
+    },
+    "/discovery_pool/approve": {
+      "post": {
+        "description": "审核发现池",
+        "tags": [
+          "discovery_pool"
+        ],
+        "summary": "审核发现池",
+        "operationId": "ApproveDiscoveryPool",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/ApproveDiscoveryPoolReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/discovery_pool/create": {
+      "post": {
+        "description": "创建发现池",
+        "tags": [
+          "discovery_pool"
+        ],
+        "summary": "创建发现池",
+        "operationId": "CreateDiscoveryPool",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/CreateDiscoveryPoolReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "DiscoveryPoolInfoResp",
+            "schema": {
+              "$ref": "#/definitions/DiscoveryPoolInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/discovery_pool/delete": {
+      "post": {
+        "description": "删除发现池",
+        "tags": [
+          "discovery_pool"
+        ],
+        "summary": "删除发现池",
+        "operationId": "DeleteDiscoveryPool",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/discovery_pool/disable": {
+      "post": {
+        "description": "禁用发现池",
+        "tags": [
+          "discovery_pool"
+        ],
+        "summary": "禁用发现池",
+        "operationId": "DisableDiscoveryPool",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/discovery_pool/enable": {
+      "post": {
+        "description": "启用发现池",
+        "tags": [
+          "discovery_pool"
+        ],
+        "summary": "启用发现池",
+        "operationId": "EnableDiscoveryPool",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/discovery_pool/list": {
+      "get": {
+        "description": "获取发现池列表",
+        "tags": [
+          "discovery_pool"
+        ],
+        "summary": "获取发现池列表",
+        "operationId": "GetDiscoveryPoolList",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/GetDiscoveryPoolListReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "DiscoveryPoolListResp",
+            "schema": {
+              "$ref": "#/definitions/DiscoveryPoolListResp"
+            }
+          }
+        }
+      }
+    },
+    "/discovery_pool/stats/{id}": {
+      "get": {
+        "description": "获取发现池统计信息",
+        "tags": [
+          "discovery_pool"
+        ],
+        "summary": "获取发现池统计信息",
+        "operationId": "GetDiscoveryPoolStats",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDPathReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "DiscoveryPoolInfoResp",
+            "schema": {
+              "$ref": "#/definitions/DiscoveryPoolInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/discovery_pool/trigger": {
+      "post": {
+        "description": "手动触发发现池执行",
+        "tags": [
+          "discovery_pool"
+        ],
+        "summary": "手动触发发现池执行",
+        "operationId": "TriggerDiscoveryPool",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/discovery_pool/update": {
+      "post": {
+        "description": "更新发现池",
+        "tags": [
+          "discovery_pool"
+        ],
+        "summary": "更新发现池",
+        "operationId": "UpdateDiscoveryPool",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/UpdateDiscoveryPoolReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "DiscoveryPoolInfoResp",
+            "schema": {
+              "$ref": "#/definitions/DiscoveryPoolInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/discovery_pool/{id}": {
+      "get": {
+        "description": "获取发现池详情",
+        "tags": [
+          "discovery_pool"
+        ],
+        "summary": "获取发现池详情",
+        "operationId": "GetDiscoveryPool",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDPathReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "DiscoveryPoolInfoResp",
+            "schema": {
+              "$ref": "#/definitions/DiscoveryPoolInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/discovery_provider/list": {
+      "get": {
+        "tags": [
+          "discovery_provider"
+        ],
+        "operationId": "ListDiscoveryProviders"
+      }
+    },
+    "/discovery_provider/schema/{providerId}": {
+      "get": {
+        "tags": [
+          "discovery_provider"
+        ],
+        "operationId": "GetProviderSchema",
+        "responses": {
+          "200": {
+            "description": "GetProviderSchemaResp",
+            "schema": {
+              "$ref": "#/definitions/GetProviderSchemaResp"
+            }
+          }
+        }
+      }
+    },
+    "/discovery_provider/test": {
+      "post": {
+        "tags": [
+          "discovery_provider"
+        ],
+        "operationId": "TestProviderConnection"
+      }
+    },
+    "/discovery_template/create": {
+      "post": {
+        "tags": [
+          "discovery_template"
+        ],
+        "operationId": "CreateDiscoveryTemplate"
+      }
+    },
+    "/discovery_template/delete": {
+      "post": {
+        "tags": [
+          "discovery_template"
+        ],
+        "operationId": "DeleteDiscoveryTemplate"
+      }
+    },
+    "/discovery_template/info": {
+      "post": {
+        "tags": [
+          "discovery_template"
+        ],
+        "operationId": "GetDiscoveryTemplateById"
+      }
+    },
+    "/discovery_template/list": {
+      "post": {
+        "tags": [
+          "discovery_template"
+        ],
+        "operationId": "GetDiscoveryTemplateList"
+      }
+    },
+    "/discovery_template/update": {
+      "post": {
+        "tags": [
+          "discovery_template"
+        ],
+        "operationId": "UpdateDiscoveryTemplate"
+      }
+    },
+    "/field_mapping/create": {
+      "post": {
+        "description": "创建字段映射",
+        "tags": [
+          "field_mapping"
+        ],
+        "summary": "创建字段映射",
+        "operationId": "CreateFieldMapping",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/CreateFieldMappingReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "FieldMappingInfoResp",
+            "schema": {
+              "$ref": "#/definitions/FieldMappingInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/field_mapping/delete": {
+      "post": {
+        "description": "删除字段映射",
+        "tags": [
+          "field_mapping"
+        ],
+        "summary": "删除字段映射",
+        "operationId": "DeleteFieldMapping",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/field_mapping/list": {
+      "get": {
+        "description": "获取字段映射列表",
+        "tags": [
+          "field_mapping"
+        ],
+        "summary": "获取字段映射列表",
+        "operationId": "GetFieldMappingList",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/GetFieldMappingListReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "FieldMappingListResp",
+            "schema": {
+              "$ref": "#/definitions/FieldMappingListResp"
+            }
+          }
+        }
+      }
+    },
+    "/field_mapping/update": {
+      "post": {
+        "description": "更新字段映射",
+        "tags": [
+          "field_mapping"
+        ],
+        "summary": "更新字段映射",
+        "operationId": "UpdateFieldMapping",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/UpdateFieldMappingReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "FieldMappingInfoResp",
+            "schema": {
+              "$ref": "#/definitions/FieldMappingInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/field_mapping/{id}": {
+      "get": {
+        "description": "获取字段映射详情",
+        "tags": [
+          "field_mapping"
+        ],
+        "summary": "获取字段映射详情",
+        "operationId": "GetFieldMapping",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDPathReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "FieldMappingInfoResp",
+            "schema": {
+              "$ref": "#/definitions/FieldMappingInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/init/database": {
+      "get": {
+        "description": "Initialize database | 初始化数据库",
+        "tags": [
+          "base"
+        ],
+        "summary": "Initialize database | 初始化数据库",
+        "operationId": "InitDatabase",
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/input_task/approve": {
+      "post": {
+        "description": "审核输入任务",
+        "tags": [
+          "input_task"
+        ],
+        "summary": "审核输入任务",
+        "operationId": "ApproveInputTask",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/ApproveInputTaskReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/input_task/cancel": {
+      "post": {
+        "description": "取消输入任务",
+        "tags": [
+          "input_task"
+        ],
+        "summary": "取消输入任务",
+        "operationId": "CancelInputTask",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/input_task/create": {
+      "post": {
+        "description": "创建输入任务",
+        "tags": [
+          "input_task"
+        ],
+        "summary": "创建输入任务",
+        "operationId": "CreateInputTask",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/CreateInputTaskReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "InputTaskInfoResp",
+            "schema": {
+              "$ref": "#/definitions/InputTaskInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/input_task/delete": {
+      "post": {
+        "description": "删除输入任务",
+        "tags": [
+          "input_task"
+        ],
+        "summary": "删除输入任务",
+        "operationId": "DeleteInputTask",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/input_task/list": {
+      "get": {
+        "description": "获取输入任务列表",
+        "tags": [
+          "input_task"
+        ],
+        "summary": "获取输入任务列表",
+        "operationId": "GetInputTaskList",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/GetInputTaskListReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "InputTaskListResp",
+            "schema": {
+              "$ref": "#/definitions/InputTaskListResp"
+            }
+          }
+        }
+      }
+    },
+    "/input_task/pause": {
+      "post": {
+        "description": "暂停输入任务",
+        "tags": [
+          "input_task"
+        ],
+        "summary": "暂停输入任务",
+        "operationId": "PauseInputTask",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/input_task/start": {
+      "post": {
+        "description": "启动输入任务",
+        "tags": [
+          "input_task"
+        ],
+        "summary": "启动输入任务",
+        "operationId": "StartInputTask",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/input_task/update": {
+      "post": {
+        "description": "更新输入任务",
+        "tags": [
+          "input_task"
+        ],
+        "summary": "更新输入任务",
+        "operationId": "UpdateInputTask",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/UpdateInputTaskReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "InputTaskInfoResp",
+            "schema": {
+              "$ref": "#/definitions/InputTaskInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/input_task/{id}": {
+      "get": {
+        "description": "获取输入任务详情",
+        "tags": [
+          "input_task"
+        ],
+        "summary": "获取输入任务详情",
+        "operationId": "GetInputTask",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDPathReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "InputTaskInfoResp",
+            "schema": {
+              "$ref": "#/definitions/InputTaskInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/mapping_log/create": {
+      "post": {
+        "description": "创建映射日志",
+        "tags": [
+          "mapping_log"
+        ],
+        "summary": "创建映射日志",
+        "operationId": "CreateMappingLog",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/CreateMappingLogReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "MappingLogInfoResp",
+            "schema": {
+              "$ref": "#/definitions/MappingLogInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/mapping_log/delete": {
+      "post": {
+        "description": "删除映射日志",
+        "tags": [
+          "mapping_log"
+        ],
+        "summary": "删除映射日志",
+        "operationId": "DeleteMappingLog",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/mapping_log/list": {
+      "get": {
+        "description": "获取映射日志列表",
+        "tags": [
+          "mapping_log"
+        ],
+        "summary": "获取映射日志列表",
+        "operationId": "GetMappingLogList",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/GetMappingLogListReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "MappingLogListResp",
+            "schema": {
+              "$ref": "#/definitions/MappingLogListResp"
+            }
+          }
+        }
+      }
+    },
+    "/mapping_log/{id}": {
+      "get": {
+        "description": "获取映射日志详情",
+        "tags": [
+          "mapping_log"
+        ],
+        "summary": "获取映射日志详情",
+        "operationId": "GetMappingLog",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDPathReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "MappingLogInfoResp",
+            "schema": {
+              "$ref": "#/definitions/MappingLogInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/output_task/cancel": {
+      "post": {
+        "description": "取消输出任务",
+        "tags": [
+          "output_task"
+        ],
+        "summary": "取消输出任务",
+        "operationId": "CancelOutputTask",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/output_task/create": {
+      "post": {
+        "description": "创建输出任务",
+        "tags": [
+          "output_task"
+        ],
+        "summary": "创建输出任务",
+        "operationId": "CreateOutputTask",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/CreateOutputTaskReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OutputTaskInfoResp",
+            "schema": {
+              "$ref": "#/definitions/OutputTaskInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/output_task/delete": {
+      "post": {
+        "description": "删除输出任务",
+        "tags": [
+          "output_task"
+        ],
+        "summary": "删除输出任务",
+        "operationId": "DeleteOutputTask",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/output_task/list": {
+      "get": {
+        "description": "获取输出任务列表",
+        "tags": [
+          "output_task"
+        ],
+        "summary": "获取输出任务列表",
+        "operationId": "GetOutputTaskList",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/GetOutputTaskListReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OutputTaskListResp",
+            "schema": {
+              "$ref": "#/definitions/OutputTaskListResp"
+            }
+          }
+        }
+      }
+    },
+    "/output_task/pause": {
+      "post": {
+        "description": "暂停输出任务",
+        "tags": [
+          "output_task"
+        ],
+        "summary": "暂停输出任务",
+        "operationId": "PauseOutputTask",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/output_task/start": {
+      "post": {
+        "description": "启动输出任务",
+        "tags": [
+          "output_task"
+        ],
+        "summary": "启动输出任务",
+        "operationId": "StartOutputTask",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/output_task/update": {
+      "post": {
+        "description": "更新输出任务",
+        "tags": [
+          "output_task"
+        ],
+        "summary": "更新输出任务",
+        "operationId": "UpdateOutputTask",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/UpdateOutputTaskReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OutputTaskInfoResp",
+            "schema": {
+              "$ref": "#/definitions/OutputTaskInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/output_task/{id}": {
+      "get": {
+        "description": "获取输出任务详情",
+        "tags": [
+          "output_task"
+        ],
+        "summary": "获取输出任务详情",
+        "operationId": "GetOutputTask",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDPathReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OutputTaskInfoResp",
+            "schema": {
+              "$ref": "#/definitions/OutputTaskInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/task_log/create": {
+      "post": {
+        "description": "创建任务日志",
+        "tags": [
+          "task_log"
+        ],
+        "summary": "创建任务日志",
+        "operationId": "CreateTaskLog",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/CreateTaskLogReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "TaskLogInfoResp",
+            "schema": {
+              "$ref": "#/definitions/TaskLogInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/task_log/delete": {
+      "post": {
+        "description": "删除任务日志",
+        "tags": [
+          "task_log"
+        ],
+        "summary": "删除任务日志",
+        "operationId": "DeleteTaskLog",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/task_log/list": {
+      "get": {
+        "description": "获取任务日志列表",
+        "tags": [
+          "task_log"
+        ],
+        "summary": "获取任务日志列表",
+        "operationId": "GetTaskLogList",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/GetTaskLogListReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "TaskLogListResp",
+            "schema": {
+              "$ref": "#/definitions/TaskLogListResp"
+            }
+          }
+        }
+      }
+    },
+    "/task_log/{id}": {
+      "get": {
+        "description": "获取任务日志详情",
+        "tags": [
+          "task_log"
+        ],
+        "summary": "获取任务日志详情",
+        "operationId": "GetTaskLog",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/IDPathReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "TaskLogInfoResp",
+            "schema": {
+              "$ref": "#/definitions/TaskLogInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/worker_metrics/create": {
+      "post": {
+        "tags": [
+          "worker_metrics"
+        ],
+        "operationId": "CreateWorkerMetrics"
+      }
+    },
+    "/worker_metrics/info": {
+      "post": {
+        "tags": [
+          "worker_metrics"
+        ],
+        "operationId": "GetWorkerMetricsById"
+      }
+    },
+    "/worker_metrics/list": {
+      "post": {
+        "tags": [
+          "worker_metrics"
+        ],
+        "operationId": "GetWorkerMetricsList"
+      }
+    }
+  },
+  "definitions": {
+    "ApproveDiscoveryPoolReq": {
+      "description": "审核发现池请求",
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "x-go-name": "Action"
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        },
+        "reason": {
+          "type": "string",
+          "x-go-name": "Reason"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "ApproveInputTaskReq": {
+      "description": "审核输入任务请求",
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "x-go-name": "Action"
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        },
+        "reason": {
+          "type": "string",
+          "x-go-name": "Reason"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "BaseDataInfo": {
+      "description": "The basic response with data | 基础带数据信息",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "BaseIDInfo": {
+      "description": "The base ID response data | 基础ID信息",
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "description": "Create date | 创建日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "id": {
+          "description": "ID",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        },
+        "updatedAt": {
+          "description": "Update date | 更新日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "BaseIDInt32Info": {
+      "description": "The base ID response data (int32) | 基础ID信息 (int32)",
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "description": "Create date | 创建日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "id": {
+          "description": "ID",
+          "type": "integer",
+          "format": "int32",
+          "x-go-name": "Id"
+        },
+        "updatedAt": {
+          "description": "Update date | 更新日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "BaseIDInt64Info": {
+      "description": "The base ID response data (int64) | 基础ID信息 (int64)",
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "description": "Create date | 创建日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "id": {
+          "description": "ID",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Id"
+        },
+        "updatedAt": {
+          "description": "Update date | 更新日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "BaseIDStringInfo": {
+      "description": "The base ID response data (string) | 基础ID信息 (string)",
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "description": "Create date | 创建日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "id": {
+          "description": "ID",
+          "type": "string",
+          "x-go-name": "Id"
+        },
+        "updatedAt": {
+          "description": "Update date | 更新日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "BaseIDUint32Info": {
+      "description": "The base ID response data (uint32) | 基础ID信息 (uint32)",
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "description": "Create date | 创建日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "id": {
+          "description": "ID",
+          "type": "integer",
+          "format": "uint32",
+          "x-go-name": "Id"
+        },
+        "updatedAt": {
+          "description": "Update date | 更新日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "BaseListInfo": {
+      "description": "The basic response with data | 基础带数据信息",
+      "type": "object",
+      "properties": {
+        "total": {
+          "description": "The total number of data | 数据总数",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Total"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "BaseMsgResp": {
+      "description": "The basic response without data | 基础不带数据信息",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "BaseUUIDInfo": {
+      "description": "The base UUID response data | 基础UUID信息",
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "description": "Create date | 创建日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "id": {
+          "description": "ID",
+          "type": "string",
+          "x-go-name": "Id"
+        },
+        "updatedAt": {
+          "description": "Update date | 更新日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "CreateDataTargetReq": {
+      "type": "object",
+      "properties": {
+        "connectionConfig": {
+          "type": "string",
+          "x-go-name": "ConnectionConfig"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "metadata": {
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "targetName": {
+          "type": "string",
+          "x-go-name": "TargetName"
+        },
+        "targetSchema": {
+          "type": "string",
+          "x-go-name": "TargetSchema"
+        },
+        "targetType": {
+          "type": "string",
+          "x-go-name": "TargetType"
+        },
+        "uniqueKeys": {
+          "type": "string",
+          "x-go-name": "UniqueKeys"
+        },
+        "validationRules": {
+          "type": "string",
+          "x-go-name": "ValidationRules"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "CreateDiscoveryPoolReq": {
+      "description": "创建发现池请求",
+      "type": "object",
+      "properties": {
+        "batchSize": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "BatchSize"
+        },
+        "concurrentLimit": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ConcurrentLimit"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "discoveryConfig": {
+          "type": "string",
+          "x-go-name": "DiscoveryConfig"
+        },
+        "discoveryType": {
+          "type": "string",
+          "x-go-name": "DiscoveryType"
+        },
+        "fieldMapping": {
+          "type": "string",
+          "x-go-name": "FieldMapping"
+        },
+        "maxRetry": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "MaxRetry"
+        },
+        "metadata": {
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "retryInterval": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "RetryInterval"
+        },
+        "schedule": {
+          "type": "string",
+          "x-go-name": "Schedule"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "CreateDiscoveryTemplateReq": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "discoveryConfig": {
+          "type": "string",
+          "x-go-name": "DiscoveryConfig"
+        },
+        "fieldMappingTemplates": {
+          "type": "string",
+          "x-go-name": "FieldMappingTemplates"
+        },
+        "isPublic": {
+          "type": "boolean",
+          "x-go-name": "IsPublic"
+        },
+        "metadata": {
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "tags": {
+          "type": "string",
+          "x-go-name": "Tags"
+        },
+        "templateCode": {
+          "type": "string",
+          "x-go-name": "TemplateCode"
+        },
+        "templateName": {
+          "type": "string",
+          "x-go-name": "TemplateName"
+        },
+        "templateType": {
+          "type": "string",
+          "x-go-name": "TemplateType"
+        },
+        "validationRules": {
+          "type": "string",
+          "x-go-name": "ValidationRules"
+        },
+        "version": {
+          "type": "string",
+          "x-go-name": "Version"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "CreateFieldMappingReq": {
+      "description": "创建字段映射请求",
+      "type": "object",
+      "properties": {
+        "allowNull": {
+          "type": "boolean",
+          "x-go-name": "AllowNull"
+        },
+        "conditionRules": {
+          "type": "string",
+          "x-go-name": "ConditionRules"
+        },
+        "defaultValue": {
+          "type": "string",
+          "x-go-name": "DefaultValue"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "discoveryPoolId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "DiscoveryPoolId"
+        },
+        "inputTaskId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "InputTaskId"
+        },
+        "isActive": {
+          "type": "boolean",
+          "x-go-name": "IsActive"
+        },
+        "isRequired": {
+          "type": "boolean",
+          "x-go-name": "IsRequired"
+        },
+        "lookupCaseSensitive": {
+          "type": "boolean",
+          "x-go-name": "LookupCaseSensitive"
+        },
+        "lookupTable": {
+          "type": "string",
+          "x-go-name": "LookupTable"
+        },
+        "mappingName": {
+          "type": "string",
+          "x-go-name": "MappingName"
+        },
+        "mappingType": {
+          "type": "string",
+          "x-go-name": "MappingType"
+        },
+        "metadata": {
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "outputTaskId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "OutputTaskId"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Priority"
+        },
+        "sortOrder": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "SortOrder"
+        },
+        "sourceDataType": {
+          "type": "string",
+          "x-go-name": "SourceDataType"
+        },
+        "sourceField": {
+          "type": "string",
+          "x-go-name": "SourceField"
+        },
+        "sourceFieldPath": {
+          "type": "string",
+          "x-go-name": "SourceFieldPath"
+        },
+        "sourceFormat": {
+          "type": "string",
+          "x-go-name": "SourceFormat"
+        },
+        "targetDataType": {
+          "type": "string",
+          "x-go-name": "TargetDataType"
+        },
+        "targetField": {
+          "type": "string",
+          "x-go-name": "TargetField"
+        },
+        "targetFieldPath": {
+          "type": "string",
+          "x-go-name": "TargetFieldPath"
+        },
+        "targetFormat": {
+          "type": "string",
+          "x-go-name": "TargetFormat"
+        },
+        "transformConfig": {
+          "type": "string",
+          "x-go-name": "TransformConfig"
+        },
+        "transformType": {
+          "type": "string",
+          "x-go-name": "TransformType"
+        },
+        "validationRegex": {
+          "type": "string",
+          "x-go-name": "ValidationRegex"
+        },
+        "validationRules": {
+          "type": "string",
+          "x-go-name": "ValidationRules"
+        },
+        "version": {
+          "type": "string",
+          "x-go-name": "Version"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "CreateInputTaskReq": {
+      "description": "创建输入任务请求",
+      "type": "object",
+      "properties": {
+        "conflictStrategy": {
+          "type": "string",
+          "x-go-name": "ConflictStrategy"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "discoveryPoolId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "DiscoveryPoolId"
+        },
+        "importMode": {
+          "type": "string",
+          "x-go-name": "ImportMode"
+        },
+        "maxRetry": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "MaxRetry"
+        },
+        "metadata": {
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "outputTargets": {
+          "type": "string",
+          "x-go-name": "OutputTargets"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Priority"
+        },
+        "scheduledAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ScheduledAt"
+        },
+        "taskConfig": {
+          "type": "string",
+          "x-go-name": "TaskConfig"
+        },
+        "taskType": {
+          "type": "string",
+          "x-go-name": "TaskType"
+        },
+        "timeoutSeconds": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "TimeoutSeconds"
+        },
+        "uniqueKeys": {
+          "type": "string",
+          "x-go-name": "UniqueKeys"
+        },
+        "validationConfig": {
+          "type": "string",
+          "x-go-name": "ValidationConfig"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "CreateMappingLogReq": {
+      "description": "创建映射日志请求",
+      "type": "object",
+      "properties": {
+        "details": {
+          "type": "string",
+          "x-go-name": "Details"
+        },
+        "fieldMappingId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "FieldMappingId"
+        },
+        "level": {
+          "type": "string",
+          "x-go-name": "Level"
+        },
+        "message": {
+          "type": "string",
+          "x-go-name": "Message"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "CreateOutputTaskReq": {
+      "description": "创建输出任务请求",
+      "type": "object",
+      "properties": {
+        "compressionConfig": {
+          "type": "string",
+          "x-go-name": "CompressionConfig"
+        },
+        "dataSource": {
+          "type": "string",
+          "x-go-name": "DataSource"
+        },
+        "dependencies": {
+          "type": "string",
+          "x-go-name": "Dependencies"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "maxRetry": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "MaxRetry"
+        },
+        "metadata": {
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "outputFormat": {
+          "type": "string",
+          "x-go-name": "OutputFormat"
+        },
+        "outputType": {
+          "type": "string",
+          "x-go-name": "OutputType"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Priority"
+        },
+        "pushTargets": {
+          "type": "string",
+          "x-go-name": "PushTargets"
+        },
+        "scheduledAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ScheduledAt"
+        },
+        "timeoutSeconds": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "TimeoutSeconds"
+        },
+        "transformConfig": {
+          "type": "string",
+          "x-go-name": "TransformConfig"
+        },
+        "triggerSource": {
+          "type": "string",
+          "x-go-name": "TriggerSource"
+        },
+        "triggerTaskId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "TriggerTaskId"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "CreateTaskLogReq": {
+      "description": "创建任务日志请求",
+      "type": "object",
+      "properties": {
+        "details": {
+          "type": "string",
+          "x-go-name": "Details"
+        },
+        "level": {
+          "type": "string",
+          "x-go-name": "Level"
+        },
+        "message": {
+          "type": "string",
+          "x-go-name": "Message"
+        },
+        "taskId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "TaskId"
+        },
+        "taskType": {
+          "type": "string",
+          "x-go-name": "TaskType"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "CreateWorkerMetricsReq": {
+      "type": "object",
+      "properties": {
+        "cpuUsagePercent": {
+          "type": "number",
+          "format": "double",
+          "x-go-name": "CpuUsagePercent"
+        },
+        "currentTaskCount": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CurrentTaskCount"
+        },
+        "memoryUsagePercent": {
+          "type": "number",
+          "format": "double",
+          "x-go-name": "MemoryUsagePercent"
+        },
+        "metadata": {
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "throughputRate": {
+          "type": "number",
+          "format": "double",
+          "x-go-name": "ThroughputRate"
+        },
+        "workerId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "WorkerId"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "DataTargetInfo": {
+      "type": "object",
+      "properties": {
+        "connectionConfig": {
+          "type": "string",
+          "x-go-name": "ConnectionConfig"
+        },
+        "createdAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        },
+        "metadata": {
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "status": {
+          "type": "integer",
+          "format": "uint8",
+          "x-go-name": "Status"
+        },
+        "targetName": {
+          "type": "string",
+          "x-go-name": "TargetName"
+        },
+        "targetSchema": {
+          "type": "string",
+          "x-go-name": "TargetSchema"
+        },
+        "targetType": {
+          "type": "string",
+          "x-go-name": "TargetType"
+        },
+        "tenantId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "TenantId"
+        },
+        "uniqueKeys": {
+          "type": "string",
+          "x-go-name": "UniqueKeys"
+        },
+        "updatedAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        },
+        "validationRules": {
+          "type": "string",
+          "x-go-name": "ValidationRules"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "DataTargetListReq": {
+      "type": "object",
+      "properties": {
+        "keyword": {
+          "type": "string",
+          "x-go-name": "Keyword"
+        },
+        "page": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Page"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "PageSize"
+        },
+        "targetType": {
+          "type": "string",
+          "x-go-name": "TargetType"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "DataTargetListResp": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DataTargetInfo"
+          },
+          "x-go-name": "Data"
+        },
+        "total": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Total"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "DiscoveryPoolInfo": {
+      "description": "发现池信息",
+      "type": "object",
+      "properties": {
+        "approvalStatus": {
+          "description": "审核流程",
+          "type": "string",
+          "x-go-name": "ApprovalStatus"
+        },
+        "approvedAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ApprovedAt"
+        },
+        "approvedBy": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "ApprovedBy"
+        },
+        "batchSize": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "BatchSize"
+        },
+        "concurrentLimit": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ConcurrentLimit"
+        },
+        "createdAt": {
+          "description": "Create date | 创建日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "discoveryConfig": {
+          "description": "配置信息",
+          "type": "string",
+          "x-go-name": "DiscoveryConfig"
+        },
+        "discoveryType": {
+          "type": "string",
+          "x-go-name": "DiscoveryType"
+        },
+        "failedRuns": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "FailedRuns"
+        },
+        "fieldMapping": {
+          "description": "字段映射",
+          "type": "string",
+          "x-go-name": "FieldMapping"
+        },
+        "id": {
+          "description": "ID",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        },
+        "lastError": {
+          "type": "string",
+          "x-go-name": "LastError"
+        },
+        "lastRunAt": {
+          "description": "最后执行信息",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "LastRunAt"
+        },
+        "lastSuccessAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "LastSuccessAt"
+        },
+        "maxRetry": {
+          "description": "重试配置",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "MaxRetry"
+        },
+        "metadata": {
+          "description": "扩展元数据",
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "name": {
+          "description": "基础信息",
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "poolStatus": {
+          "type": "string",
+          "x-go-name": "PoolStatus"
+        },
+        "rejectionReason": {
+          "type": "string",
+          "x-go-name": "RejectionReason"
+        },
+        "retryInterval": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "RetryInterval"
+        },
+        "schedule": {
+          "type": "string",
+          "x-go-name": "Schedule"
+        },
+        "successRuns": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "SuccessRuns"
+        },
+        "totalRuns": {
+          "description": "运行统计",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "TotalRuns"
+        },
+        "updatedAt": {
+          "description": "Update date | 更新日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "DiscoveryPoolInfoResp": {
+      "description": "发现池信息响应",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/DiscoveryPoolInfo"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "DiscoveryPoolListData": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DiscoveryPoolInfo"
+          },
+          "x-go-name": "Data"
+        },
+        "total": {
+          "description": "The total number of data | 数据总数",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Total"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "DiscoveryPoolListResp": {
+      "description": "发现池列表响应",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/DiscoveryPoolListData"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "DiscoveryTemplateInfo": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "discoveryConfig": {
+          "type": "string",
+          "x-go-name": "DiscoveryConfig"
+        },
+        "fieldMappingTemplates": {
+          "type": "string",
+          "x-go-name": "FieldMappingTemplates"
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        },
+        "isPublic": {
+          "type": "boolean",
+          "x-go-name": "IsPublic"
+        },
+        "isSystem": {
+          "type": "boolean",
+          "x-go-name": "IsSystem"
+        },
+        "metadata": {
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "status": {
+          "type": "integer",
+          "format": "uint8",
+          "x-go-name": "Status"
+        },
+        "tags": {
+          "type": "string",
+          "x-go-name": "Tags"
+        },
+        "templateCode": {
+          "type": "string",
+          "x-go-name": "TemplateCode"
+        },
+        "templateName": {
+          "type": "string",
+          "x-go-name": "TemplateName"
+        },
+        "templateType": {
+          "type": "string",
+          "x-go-name": "TemplateType"
+        },
+        "tenantId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "TenantId"
+        },
+        "updatedAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        },
+        "usageCount": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UsageCount"
+        },
+        "validationRules": {
+          "type": "string",
+          "x-go-name": "ValidationRules"
+        },
+        "version": {
+          "type": "string",
+          "x-go-name": "Version"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "DiscoveryTemplateListReq": {
+      "type": "object",
+      "properties": {
+        "isPublic": {
+          "type": "boolean",
+          "x-go-name": "IsPublic"
+        },
+        "isSystem": {
+          "type": "boolean",
+          "x-go-name": "IsSystem"
+        },
+        "keyword": {
+          "type": "string",
+          "x-go-name": "Keyword"
+        },
+        "page": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Page"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "PageSize"
+        },
+        "templateType": {
+          "type": "string",
+          "x-go-name": "TemplateType"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "DiscoveryTemplateListResp": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DiscoveryTemplateInfo"
+          },
+          "x-go-name": "Data"
+        },
+        "total": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Total"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "FieldDefinition": {
+      "type": "object",
+      "properties": {
+        "dataType": {
+          "type": "string",
+          "x-go-name": "DataType"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "example": {
+          "type": "string",
+          "x-go-name": "Example"
+        },
+        "label": {
+          "type": "string",
+          "x-go-name": "Label"
+        },
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "required": {
+          "type": "boolean",
+          "x-go-name": "Required"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "FieldMappingInfo": {
+      "description": "字段映射信息",
+      "type": "object",
+      "properties": {
+        "allowNull": {
+          "type": "boolean",
+          "x-go-name": "AllowNull"
+        },
+        "conditionRules": {
+          "description": "条件规则",
+          "type": "string",
+          "x-go-name": "ConditionRules"
+        },
+        "createdAt": {
+          "description": "Create date | 创建日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "defaultValue": {
+          "description": "验证配置",
+          "type": "string",
+          "x-go-name": "DefaultValue"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "discoveryPoolId": {
+          "description": "关联信息",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "DiscoveryPoolId"
+        },
+        "failedCount": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "FailedCount"
+        },
+        "id": {
+          "description": "ID",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        },
+        "inputTaskId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "InputTaskId"
+        },
+        "isActive": {
+          "type": "boolean",
+          "x-go-name": "IsActive"
+        },
+        "isRequired": {
+          "type": "boolean",
+          "x-go-name": "IsRequired"
+        },
+        "lastError": {
+          "type": "string",
+          "x-go-name": "LastError"
+        },
+        "lastErrorAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "LastErrorAt"
+        },
+        "lastUsedAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "LastUsedAt"
+        },
+        "lookupCaseSensitive": {
+          "type": "boolean",
+          "x-go-name": "LookupCaseSensitive"
+        },
+        "lookupTable": {
+          "description": "查找表配置",
+          "type": "string",
+          "x-go-name": "LookupTable"
+        },
+        "mappingName": {
+          "description": "基础信息",
+          "type": "string",
+          "x-go-name": "MappingName"
+        },
+        "mappingType": {
+          "type": "string",
+          "x-go-name": "MappingType"
+        },
+        "metadata": {
+          "description": "扩展元数据",
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "outputTaskId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "OutputTaskId"
+        },
+        "priority": {
+          "description": "优先级和排序",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Priority"
+        },
+        "sortOrder": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "SortOrder"
+        },
+        "sourceDataType": {
+          "type": "string",
+          "x-go-name": "SourceDataType"
+        },
+        "sourceField": {
+          "description": "源字段信息",
+          "type": "string",
+          "x-go-name": "SourceField"
+        },
+        "sourceFieldPath": {
+          "type": "string",
+          "x-go-name": "SourceFieldPath"
+        },
+        "sourceFormat": {
+          "type": "string",
+          "x-go-name": "SourceFormat"
+        },
+        "successCount": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "SuccessCount"
+        },
+        "targetDataType": {
+          "type": "string",
+          "x-go-name": "TargetDataType"
+        },
+        "targetField": {
+          "description": "目标字段信息",
+          "type": "string",
+          "x-go-name": "TargetField"
+        },
+        "targetFieldPath": {
+          "type": "string",
+          "x-go-name": "TargetFieldPath"
+        },
+        "targetFormat": {
+          "type": "string",
+          "x-go-name": "TargetFormat"
+        },
+        "transformConfig": {
+          "type": "string",
+          "x-go-name": "TransformConfig"
+        },
+        "transformType": {
+          "description": "转换配置",
+          "type": "string",
+          "x-go-name": "TransformType"
+        },
+        "updatedAt": {
+          "description": "Update date | 更新日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        },
+        "usageCount": {
+          "description": "使用统计",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UsageCount"
+        },
+        "validationRegex": {
+          "type": "string",
+          "x-go-name": "ValidationRegex"
+        },
+        "validationRules": {
+          "type": "string",
+          "x-go-name": "ValidationRules"
+        },
+        "version": {
+          "description": "版本控制",
+          "type": "string",
+          "x-go-name": "Version"
+        },
+        "versionHistory": {
+          "type": "string",
+          "x-go-name": "VersionHistory"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "FieldMappingInfoResp": {
+      "description": "字段映射信息响应",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/FieldMappingInfo"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "FieldMappingListData": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FieldMappingInfo"
+          },
+          "x-go-name": "Data"
+        },
+        "total": {
+          "description": "The total number of data | 数据总数",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Total"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "FieldMappingListResp": {
+      "description": "字段映射列表响应",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/FieldMappingListData"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "GetDiscoveryPoolListReq": {
+      "description": "发现池列表查询请求",
+      "type": "object",
+      "properties": {
+        "approvalStatus": {
+          "type": "string",
+          "x-go-name": "ApprovalStatus"
+        },
+        "discoveryType": {
+          "type": "string",
+          "x-go-name": "DiscoveryType"
+        },
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "page": {
+          "description": "Page number | 第几页",
+          "type": "integer",
+          "format": "uint64",
+          "minimum": 0,
+          "x-go-name": "Page"
+        },
+        "pageSize": {
+          "description": "Page size | 单页数据行数",
+          "type": "integer",
+          "format": "uint64",
+          "maximum": 100000,
+          "x-go-name": "PageSize"
+        },
+        "poolStatus": {
+          "type": "string",
+          "x-go-name": "PoolStatus"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "GetFieldMappingListReq": {
+      "description": "字段映射列表查询请求",
+      "type": "object",
+      "properties": {
+        "IsActive": {
+          "type": "boolean"
+        },
+        "MappingName": {
+          "type": "string"
+        },
+        "MappingType": {
+          "type": "string"
+        },
+        "page": {
+          "description": "Page number | 第几页",
+          "type": "integer",
+          "format": "uint64",
+          "minimum": 0,
+          "x-go-name": "Page"
+        },
+        "pageSize": {
+          "description": "Page size | 单页数据行数",
+          "type": "integer",
+          "format": "uint64",
+          "maximum": 100000,
+          "x-go-name": "PageSize"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "GetInputTaskListReq": {
+      "description": "输入任务列表查询请求",
+      "type": "object",
+      "properties": {
+        "approvalStatus": {
+          "type": "string",
+          "x-go-name": "ApprovalStatus"
+        },
+        "discoveryPoolId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "DiscoveryPoolId"
+        },
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "page": {
+          "description": "Page number | 第几页",
+          "type": "integer",
+          "format": "uint64",
+          "minimum": 0,
+          "x-go-name": "Page"
+        },
+        "pageSize": {
+          "description": "Page size | 单页数据行数",
+          "type": "integer",
+          "format": "uint64",
+          "maximum": 100000,
+          "x-go-name": "PageSize"
+        },
+        "taskStatus": {
+          "type": "string",
+          "x-go-name": "TaskStatus"
+        },
+        "taskType": {
+          "type": "string",
+          "x-go-name": "TaskType"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "GetMappingLogListReq": {
+      "description": "映射日志列表查询请求",
+      "type": "object",
+      "properties": {
+        "FieldMappingId": {
+          "type": "integer",
+          "format": "uint64"
+        },
+        "Level": {
+          "type": "string"
+        },
+        "page": {
+          "description": "Page number | 第几页",
+          "type": "integer",
+          "format": "uint64",
+          "minimum": 0,
+          "x-go-name": "Page"
+        },
+        "pageSize": {
+          "description": "Page size | 单页数据行数",
+          "type": "integer",
+          "format": "uint64",
+          "maximum": 100000,
+          "x-go-name": "PageSize"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "GetOutputTaskListReq": {
+      "description": "输出任务列表查询请求",
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "OutputType": {
+          "type": "string"
+        },
+        "TaskStatus": {
+          "type": "string"
+        },
+        "page": {
+          "description": "Page number | 第几页",
+          "type": "integer",
+          "format": "uint64",
+          "minimum": 0,
+          "x-go-name": "Page"
+        },
+        "pageSize": {
+          "description": "Page size | 单页数据行数",
+          "type": "integer",
+          "format": "uint64",
+          "maximum": 100000,
+          "x-go-name": "PageSize"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "GetProviderSchemaResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "uint32",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "$ref": "#/definitions/ProviderSchemaInfo"
+        },
+        "msg": {
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "GetTaskLogListReq": {
+      "description": "任务日志列表查询请求",
+      "type": "object",
+      "properties": {
+        "Level": {
+          "type": "string"
+        },
+        "TaskId": {
+          "type": "integer",
+          "format": "uint64"
+        },
+        "TaskType": {
+          "type": "string"
+        },
+        "page": {
+          "description": "Page number | 第几页",
+          "type": "integer",
+          "format": "uint64",
+          "minimum": 0,
+          "x-go-name": "Page"
+        },
+        "pageSize": {
+          "description": "Page size | 单页数据行数",
+          "type": "integer",
+          "format": "uint64",
+          "maximum": 100000,
+          "x-go-name": "PageSize"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "IDInt32PathReq": {
+      "description": "Basic ID request (int32) | 基础ID地址参数请求 (int32)",
+      "type": "object",
+      "required": [
+        "Id"
+      ],
+      "properties": {
+        "Id": {
+          "description": "ID",
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "IDInt32Req": {
+      "description": "Basic ID request (int32) | 基础ID参数请求 (int32)",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "description": "ID",
+          "type": "integer",
+          "format": "int32",
+          "x-go-name": "Id"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "IDInt64PathReq": {
+      "description": "Basic ID request (int64) | 基础ID地址参数请求 (int64)",
+      "type": "object",
+      "required": [
+        "Id"
+      ],
+      "properties": {
+        "Id": {
+          "description": "ID",
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "IDInt64Req": {
+      "description": "Basic ID request (int64) | 基础ID参数请求 (int64)",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "description": "ID",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Id"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "IDPathReq": {
+      "description": "Basic ID request | 基础ID地址参数请求",
+      "type": "object",
+      "required": [
+        "Id"
+      ],
+      "properties": {
+        "Id": {
+          "description": "ID",
+          "type": "integer",
+          "format": "uint64"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "IDReq": {
+      "description": "Basic ID request | 基础ID参数请求",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "description": "ID",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "IDStringPathReq": {
+      "description": "Basic ID request (string) | 基础ID地址参数请求 (string)",
+      "type": "object",
+      "required": [
+        "Id"
+      ],
+      "properties": {
+        "Id": {
+          "description": "ID",
+          "type": "string"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "IDStringReq": {
+      "description": "Basic ID request (string) | 基础ID参数请求 (string)",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "description": "ID",
+          "type": "string",
+          "x-go-name": "Id"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "IDUint32PathReq": {
+      "description": "Basic ID request (uint32) | 基础ID地址参数请求 (uint32)",
+      "type": "object",
+      "required": [
+        "Id"
+      ],
+      "properties": {
+        "Id": {
+          "description": "ID",
+          "type": "integer",
+          "format": "uint32"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "IDUint32Req": {
+      "description": "Basic ID request (uint32) | 基础ID参数请求 (uint32)",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "description": "ID",
+          "type": "integer",
+          "format": "uint32",
+          "x-go-name": "Id"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "IDsInt32Req": {
+      "description": "Basic IDs request (int32) | 基础ID数组参数请求 (int32)",
+      "type": "object",
+      "required": [
+        "ids"
+      ],
+      "properties": {
+        "ids": {
+          "description": "IDs",
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "x-go-name": "Ids"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "IDsInt64Req": {
+      "description": "Basic IDs request (int64) | 基础ID数组参数请求 (int64)",
+      "type": "object",
+      "required": [
+        "ids"
+      ],
+      "properties": {
+        "ids": {
+          "description": "IDs",
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "x-go-name": "Ids"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "IDsReq": {
+      "description": "Basic IDs request | 基础ID数组参数请求",
+      "type": "object",
+      "required": [
+        "ids"
+      ],
+      "properties": {
+        "ids": {
+          "description": "IDs",
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "uint64"
+          },
+          "x-go-name": "Ids"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "IDsStringReq": {
+      "description": "Basic IDs request (string) | 基础ID数组参数请求 (string)",
+      "type": "object",
+      "required": [
+        "ids"
+      ],
+      "properties": {
+        "ids": {
+          "description": "IDs",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-go-name": "Ids"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "IDsUint32Req": {
+      "description": "Basic IDs request (uint32) | 基础ID数组参数请求 (uint32)",
+      "type": "object",
+      "required": [
+        "ids"
+      ],
+      "properties": {
+        "ids": {
+          "description": "IDs",
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "uint32"
+          },
+          "x-go-name": "Ids"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "InputTaskInfo": {
+      "description": "输入任务信息",
+      "type": "object",
+      "properties": {
+        "approvalStatus": {
+          "description": "审核流程",
+          "type": "string",
+          "x-go-name": "ApprovalStatus"
+        },
+        "approvedAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ApprovedAt"
+        },
+        "approvedBy": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "ApprovedBy"
+        },
+        "completedAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CompletedAt"
+        },
+        "conflictStrategy": {
+          "type": "string",
+          "x-go-name": "ConflictStrategy"
+        },
+        "createdAt": {
+          "description": "Create date | 创建日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "discoveryPoolId": {
+          "description": "关联信息",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "DiscoveryPoolId"
+        },
+        "errorDetails": {
+          "type": "string",
+          "x-go-name": "ErrorDetails"
+        },
+        "errorMessage": {
+          "description": "错误信息",
+          "type": "string",
+          "x-go-name": "ErrorMessage"
+        },
+        "failedRecords": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "FailedRecords"
+        },
+        "id": {
+          "description": "ID",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        },
+        "importMode": {
+          "description": "导入模式配置",
+          "type": "string",
+          "x-go-name": "ImportMode"
+        },
+        "maxRetry": {
+          "description": "重试配置",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "MaxRetry"
+        },
+        "metadata": {
+          "description": "扩展元数据",
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "name": {
+          "description": "基础信息",
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "nextRetryAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "NextRetryAt"
+        },
+        "outputTargets": {
+          "type": "string",
+          "x-go-name": "OutputTargets"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Priority"
+        },
+        "processedRecords": {
+          "description": "处理统计",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ProcessedRecords"
+        },
+        "progressMessage": {
+          "type": "string",
+          "x-go-name": "ProgressMessage"
+        },
+        "progressPercent": {
+          "description": "进度信息",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ProgressPercent"
+        },
+        "rejectionReason": {
+          "type": "string",
+          "x-go-name": "RejectionReason"
+        },
+        "retryCount": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "RetryCount"
+        },
+        "scheduledAt": {
+          "description": "调度信息",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ScheduledAt"
+        },
+        "startedAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "StartedAt"
+        },
+        "successRecords": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "SuccessRecords"
+        },
+        "taskConfig": {
+          "description": "任务配置",
+          "type": "string",
+          "x-go-name": "TaskConfig"
+        },
+        "taskStatus": {
+          "type": "string",
+          "x-go-name": "TaskStatus"
+        },
+        "taskType": {
+          "type": "string",
+          "x-go-name": "TaskType"
+        },
+        "timeoutSeconds": {
+          "description": "超时配置",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "TimeoutSeconds"
+        },
+        "uniqueKeys": {
+          "type": "string",
+          "x-go-name": "UniqueKeys"
+        },
+        "updatedAt": {
+          "description": "Update date | 更新日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        },
+        "validationConfig": {
+          "type": "string",
+          "x-go-name": "ValidationConfig"
+        },
+        "workerId": {
+          "type": "string",
+          "x-go-name": "WorkerId"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "InputTaskInfoResp": {
+      "description": "输入任务信息响应",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/InputTaskInfo"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "InputTaskListData": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InputTaskInfo"
+          },
+          "x-go-name": "Data"
+        },
+        "total": {
+          "description": "The total number of data | 数据总数",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Total"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "InputTaskListResp": {
+      "description": "输入任务列表响应",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/InputTaskListData"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "ListProvidersResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "uint32",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProviderMetadata"
+          },
+          "x-go-name": "Data"
+        },
+        "msg": {
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "MappingLogInfo": {
+      "description": "映射日志信息",
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "description": "Create date | 创建日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "details": {
+          "type": "string",
+          "x-go-name": "Details"
+        },
+        "fieldMappingId": {
+          "description": "关联信息",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "FieldMappingId"
+        },
+        "id": {
+          "description": "ID",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        },
+        "level": {
+          "description": "日志信息",
+          "type": "string",
+          "x-go-name": "Level"
+        },
+        "message": {
+          "type": "string",
+          "x-go-name": "Message"
+        },
+        "updatedAt": {
+          "description": "Update date | 更新日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "MappingLogInfoResp": {
+      "description": "映射日志信息响应",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/MappingLogInfo"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "MappingLogListData": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MappingLogInfo"
+          },
+          "x-go-name": "Data"
+        },
+        "total": {
+          "description": "The total number of data | 数据总数",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Total"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "MappingLogListResp": {
+      "description": "映射日志列表响应",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/MappingLogListData"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "OutputTaskInfo": {
+      "description": "输出任务信息",
+      "type": "object",
+      "properties": {
+        "completedAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CompletedAt"
+        },
+        "compressionConfig": {
+          "type": "string",
+          "x-go-name": "CompressionConfig"
+        },
+        "createdAt": {
+          "description": "Create date | 创建日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "dataSource": {
+          "description": "数据源配置",
+          "type": "string",
+          "x-go-name": "DataSource"
+        },
+        "dependencies": {
+          "type": "string",
+          "x-go-name": "Dependencies"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "durationSeconds": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "DurationSeconds"
+        },
+        "errorDetails": {
+          "type": "string",
+          "x-go-name": "ErrorDetails"
+        },
+        "errorMessage": {
+          "description": "错误信息",
+          "type": "string",
+          "x-go-name": "ErrorMessage"
+        },
+        "failedRecords": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "FailedRecords"
+        },
+        "id": {
+          "description": "ID",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        },
+        "maxRetry": {
+          "description": "重试配置",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "MaxRetry"
+        },
+        "metadata": {
+          "description": "扩展元数据",
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "name": {
+          "description": "基础信息",
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "nextRetryAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "NextRetryAt"
+        },
+        "outputFilePath": {
+          "type": "string",
+          "x-go-name": "OutputFilePath"
+        },
+        "outputFileSize": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "OutputFileSize"
+        },
+        "outputFormat": {
+          "type": "string",
+          "x-go-name": "OutputFormat"
+        },
+        "outputType": {
+          "type": "string",
+          "x-go-name": "OutputType"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Priority"
+        },
+        "processedRecords": {
+          "description": "处理统计",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ProcessedRecords"
+        },
+        "progressMessage": {
+          "type": "string",
+          "x-go-name": "ProgressMessage"
+        },
+        "progressPercent": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ProgressPercent"
+        },
+        "pushTargets": {
+          "description": "推送目标",
+          "type": "string",
+          "x-go-name": "PushTargets"
+        },
+        "retryCount": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "RetryCount"
+        },
+        "scheduledAt": {
+          "description": "调度信息",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ScheduledAt"
+        },
+        "startedAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "StartedAt"
+        },
+        "successRecords": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "SuccessRecords"
+        },
+        "taskStatus": {
+          "type": "string",
+          "x-go-name": "TaskStatus"
+        },
+        "throughputRate": {
+          "type": "number",
+          "format": "double",
+          "x-go-name": "ThroughputRate"
+        },
+        "timeoutSeconds": {
+          "description": "超时配置",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "TimeoutSeconds"
+        },
+        "transformConfig": {
+          "type": "string",
+          "x-go-name": "TransformConfig"
+        },
+        "triggerSource": {
+          "description": "触发信息",
+          "type": "string",
+          "x-go-name": "TriggerSource"
+        },
+        "triggerTaskId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "TriggerTaskId"
+        },
+        "updatedAt": {
+          "description": "Update date | 更新日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        },
+        "workerId": {
+          "description": "执行信息",
+          "type": "string",
+          "x-go-name": "WorkerId"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "OutputTaskInfoResp": {
+      "description": "输出任务信息响应",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/OutputTaskInfo"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "OutputTaskListData": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OutputTaskInfo"
+          },
+          "x-go-name": "Data"
+        },
+        "total": {
+          "description": "The total number of data | 数据总数",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Total"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "OutputTaskListResp": {
+      "description": "输出任务列表响应",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/OutputTaskListData"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "PageInfo": {
+      "description": "The page request parameters | 列表请求参数",
+      "type": "object",
+      "properties": {
+        "page": {
+          "description": "Page number | 第几页",
+          "type": "integer",
+          "format": "uint64",
+          "minimum": 0,
+          "x-go-name": "Page"
+        },
+        "pageSize": {
+          "description": "Page size | 单页数据行数",
+          "type": "integer",
+          "format": "uint64",
+          "maximum": 100000,
+          "x-go-name": "PageSize"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "ParameterDefinition": {
+      "type": "object",
+      "properties": {
+        "defaultValue": {
+          "x-go-name": "DefaultValue"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "label": {
+          "type": "string",
+          "x-go-name": "Label"
+        },
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-go-name": "Options"
+        },
+        "placeholder": {
+          "type": "string",
+          "x-go-name": "Placeholder"
+        },
+        "required": {
+          "type": "boolean",
+          "x-go-name": "Required"
+        },
+        "type": {
+          "type": "string",
+          "x-go-name": "Type"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "ProviderMetadata": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string",
+          "x-go-name": "Category"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "icon": {
+          "type": "string",
+          "x-go-name": "Icon"
+        },
+        "id": {
+          "type": "string",
+          "x-go-name": "Id"
+        },
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "version": {
+          "type": "string",
+          "x-go-name": "Version"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "ProviderSchemaInfo": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string",
+          "x-go-name": "Category"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "executionMode": {
+          "type": "string",
+          "x-go-name": "ExecutionMode"
+        },
+        "fieldSchema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FieldDefinition"
+          },
+          "x-go-name": "FieldSchema"
+        },
+        "iconUrl": {
+          "type": "string",
+          "x-go-name": "IconUrl"
+        },
+        "id": {
+          "type": "string",
+          "x-go-name": "Id"
+        },
+        "isActive": {
+          "type": "boolean",
+          "x-go-name": "IsActive"
+        },
+        "isBuiltin": {
+          "type": "boolean",
+          "x-go-name": "IsBuiltin"
+        },
+        "parameterSchema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ParameterDefinition"
+          },
+          "x-go-name": "ParameterSchema"
+        },
+        "providerId": {
+          "type": "string",
+          "x-go-name": "ProviderId"
+        },
+        "providerName": {
+          "type": "string",
+          "x-go-name": "ProviderName"
+        },
+        "version": {
+          "type": "string",
+          "x-go-name": "Version"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "TaskLogInfo": {
+      "description": "任务日志信息",
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "description": "Create date | 创建日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "details": {
+          "type": "string",
+          "x-go-name": "Details"
+        },
+        "id": {
+          "description": "ID",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        },
+        "level": {
+          "description": "日志信息",
+          "type": "string",
+          "x-go-name": "Level"
+        },
+        "message": {
+          "type": "string",
+          "x-go-name": "Message"
+        },
+        "taskId": {
+          "description": "关联信息",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "TaskId"
+        },
+        "taskType": {
+          "type": "string",
+          "x-go-name": "TaskType"
+        },
+        "updatedAt": {
+          "description": "Update date | 更新日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "TaskLogInfoResp": {
+      "description": "任务日志信息响应",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/TaskLogInfo"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "TaskLogListData": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TaskLogInfo"
+          },
+          "x-go-name": "Data"
+        },
+        "total": {
+          "description": "The total number of data | 数据总数",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Total"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "TaskLogListResp": {
+      "description": "任务日志列表响应",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/TaskLogListData"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "TestConnectionData": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "x-go-name": "Message"
+        },
+        "success": {
+          "type": "boolean",
+          "x-go-name": "Success"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "TestConnectionReq": {
+      "type": "object",
+      "properties": {
+        "config": {
+          "type": "object",
+          "additionalProperties": {},
+          "x-go-name": "Config"
+        },
+        "providerId": {
+          "type": "string",
+          "x-go-name": "ProviderId"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "TestConnectionResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "uint32",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "$ref": "#/definitions/TestConnectionData"
+        },
+        "msg": {
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "UUIDPathReq": {
+      "description": "Basic UUID request in path | 基础UUID地址参数请求",
+      "type": "object",
+      "required": [
+        "Id"
+      ],
+      "properties": {
+        "Id": {
+          "description": "ID",
+          "type": "string"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "UUIDReq": {
+      "description": "Basic UUID request | 基础UUID参数请求",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "description": "ID",
+          "type": "string",
+          "maxLength": 36,
+          "minLength": 36,
+          "x-go-name": "Id"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "UUIDsReq": {
+      "description": "Basic UUID array request | 基础UUID数组参数请求",
+      "type": "object",
+      "required": [
+        "ids"
+      ],
+      "properties": {
+        "ids": {
+          "description": "Ids",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-go-name": "Ids"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "UpdateDataTargetReq": {
+      "type": "object",
+      "properties": {
+        "connectionConfig": {
+          "type": "string",
+          "x-go-name": "ConnectionConfig"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        },
+        "metadata": {
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "targetName": {
+          "type": "string",
+          "x-go-name": "TargetName"
+        },
+        "targetSchema": {
+          "type": "string",
+          "x-go-name": "TargetSchema"
+        },
+        "targetType": {
+          "type": "string",
+          "x-go-name": "TargetType"
+        },
+        "uniqueKeys": {
+          "type": "string",
+          "x-go-name": "UniqueKeys"
+        },
+        "validationRules": {
+          "type": "string",
+          "x-go-name": "ValidationRules"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "UpdateDiscoveryPoolReq": {
+      "description": "更新发现池请求",
+      "type": "object",
+      "properties": {
+        "batchSize": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "BatchSize"
+        },
+        "concurrentLimit": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ConcurrentLimit"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "discoveryConfig": {
+          "type": "string",
+          "x-go-name": "DiscoveryConfig"
+        },
+        "discoveryType": {
+          "type": "string",
+          "x-go-name": "DiscoveryType"
+        },
+        "fieldMapping": {
+          "type": "string",
+          "x-go-name": "FieldMapping"
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        },
+        "maxRetry": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "MaxRetry"
+        },
+        "metadata": {
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "retryInterval": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "RetryInterval"
+        },
+        "schedule": {
+          "type": "string",
+          "x-go-name": "Schedule"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "UpdateDiscoveryTemplateReq": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "discoveryConfig": {
+          "type": "string",
+          "x-go-name": "DiscoveryConfig"
+        },
+        "fieldMappingTemplates": {
+          "type": "string",
+          "x-go-name": "FieldMappingTemplates"
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        },
+        "isPublic": {
+          "type": "boolean",
+          "x-go-name": "IsPublic"
+        },
+        "metadata": {
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "tags": {
+          "type": "string",
+          "x-go-name": "Tags"
+        },
+        "templateName": {
+          "type": "string",
+          "x-go-name": "TemplateName"
+        },
+        "templateType": {
+          "type": "string",
+          "x-go-name": "TemplateType"
+        },
+        "validationRules": {
+          "type": "string",
+          "x-go-name": "ValidationRules"
+        },
+        "version": {
+          "type": "string",
+          "x-go-name": "Version"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "UpdateFieldMappingReq": {
+      "description": "更新字段映射请求",
+      "type": "object",
+      "properties": {
+        "allowNull": {
+          "type": "boolean",
+          "x-go-name": "AllowNull"
+        },
+        "conditionRules": {
+          "type": "string",
+          "x-go-name": "ConditionRules"
+        },
+        "defaultValue": {
+          "type": "string",
+          "x-go-name": "DefaultValue"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "discoveryPoolId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "DiscoveryPoolId"
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        },
+        "inputTaskId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "InputTaskId"
+        },
+        "isActive": {
+          "type": "boolean",
+          "x-go-name": "IsActive"
+        },
+        "isRequired": {
+          "type": "boolean",
+          "x-go-name": "IsRequired"
+        },
+        "lookupCaseSensitive": {
+          "type": "boolean",
+          "x-go-name": "LookupCaseSensitive"
+        },
+        "lookupTable": {
+          "type": "string",
+          "x-go-name": "LookupTable"
+        },
+        "mappingName": {
+          "type": "string",
+          "x-go-name": "MappingName"
+        },
+        "mappingType": {
+          "type": "string",
+          "x-go-name": "MappingType"
+        },
+        "metadata": {
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "outputTaskId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "OutputTaskId"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Priority"
+        },
+        "sortOrder": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "SortOrder"
+        },
+        "sourceDataType": {
+          "type": "string",
+          "x-go-name": "SourceDataType"
+        },
+        "sourceField": {
+          "type": "string",
+          "x-go-name": "SourceField"
+        },
+        "sourceFieldPath": {
+          "type": "string",
+          "x-go-name": "SourceFieldPath"
+        },
+        "sourceFormat": {
+          "type": "string",
+          "x-go-name": "SourceFormat"
+        },
+        "targetDataType": {
+          "type": "string",
+          "x-go-name": "TargetDataType"
+        },
+        "targetField": {
+          "type": "string",
+          "x-go-name": "TargetField"
+        },
+        "targetFieldPath": {
+          "type": "string",
+          "x-go-name": "TargetFieldPath"
+        },
+        "targetFormat": {
+          "type": "string",
+          "x-go-name": "TargetFormat"
+        },
+        "transformConfig": {
+          "type": "string",
+          "x-go-name": "TransformConfig"
+        },
+        "transformType": {
+          "type": "string",
+          "x-go-name": "TransformType"
+        },
+        "validationRegex": {
+          "type": "string",
+          "x-go-name": "ValidationRegex"
+        },
+        "validationRules": {
+          "type": "string",
+          "x-go-name": "ValidationRules"
+        },
+        "version": {
+          "type": "string",
+          "x-go-name": "Version"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "UpdateInputTaskReq": {
+      "description": "更新输入任务请求",
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "discoveryPoolId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "DiscoveryPoolId"
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        },
+        "maxRetry": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "MaxRetry"
+        },
+        "metadata": {
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "outputTargets": {
+          "type": "string",
+          "x-go-name": "OutputTargets"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Priority"
+        },
+        "scheduledAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ScheduledAt"
+        },
+        "taskConfig": {
+          "type": "string",
+          "x-go-name": "TaskConfig"
+        },
+        "taskType": {
+          "type": "string",
+          "x-go-name": "TaskType"
+        },
+        "timeoutSeconds": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "TimeoutSeconds"
+        },
+        "validationConfig": {
+          "type": "string",
+          "x-go-name": "ValidationConfig"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "UpdateOutputTaskReq": {
+      "description": "更新输出任务请求",
+      "type": "object",
+      "properties": {
+        "compressionConfig": {
+          "type": "string",
+          "x-go-name": "CompressionConfig"
+        },
+        "dataSource": {
+          "type": "string",
+          "x-go-name": "DataSource"
+        },
+        "dependencies": {
+          "type": "string",
+          "x-go-name": "Dependencies"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        },
+        "maxRetry": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "MaxRetry"
+        },
+        "metadata": {
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "outputFormat": {
+          "type": "string",
+          "x-go-name": "OutputFormat"
+        },
+        "outputType": {
+          "type": "string",
+          "x-go-name": "OutputType"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Priority"
+        },
+        "pushTargets": {
+          "type": "string",
+          "x-go-name": "PushTargets"
+        },
+        "scheduledAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ScheduledAt"
+        },
+        "timeoutSeconds": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "TimeoutSeconds"
+        },
+        "transformConfig": {
+          "type": "string",
+          "x-go-name": "TransformConfig"
+        },
+        "triggerSource": {
+          "type": "string",
+          "x-go-name": "TriggerSource"
+        },
+        "triggerTaskId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "TriggerTaskId"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "WorkerMetricsInfo": {
+      "type": "object",
+      "properties": {
+        "cpuUsagePercent": {
+          "type": "number",
+          "format": "double",
+          "x-go-name": "CpuUsagePercent"
+        },
+        "createdAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "currentTaskCount": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CurrentTaskCount"
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Id"
+        },
+        "memoryUsagePercent": {
+          "type": "number",
+          "format": "double",
+          "x-go-name": "MemoryUsagePercent"
+        },
+        "metadata": {
+          "type": "string",
+          "x-go-name": "Metadata"
+        },
+        "metricTime": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "MetricTime"
+        },
+        "tenantId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "TenantId"
+        },
+        "throughputRate": {
+          "type": "number",
+          "format": "double",
+          "x-go-name": "ThroughputRate"
+        },
+        "updatedAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        },
+        "workerId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "WorkerId"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "WorkerMetricsListReq": {
+      "type": "object",
+      "properties": {
+        "endTime": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "EndTime"
+        },
+        "page": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Page"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "PageSize"
+        },
+        "startTime": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "StartTime"
+        },
+        "workerId": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "WorkerId"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    },
+    "WorkerMetricsListResp": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/WorkerMetricsInfo"
+          },
+          "x-go-name": "Data"
+        },
+        "total": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Total"
+        }
+      },
+      "x-go-package": "github.com/coder-lulu/newbee-io-api/internal/types"
+    }
+  },
+  "securityDefinitions": {
+    "Token": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "Token": []
+    }
+  ]
+}

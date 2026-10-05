@@ -1,0 +1,73 @@
+syntax = "v1"
+
+import "base.api"
+
+// 任务日志信息
+type TaskLogInfo {
+    BaseIDInfo
+    
+    // 关联信息
+    TaskId   uint64 `json:"taskId"`   // 任务ID
+    TaskType string `json:"taskType"` // 任务类型: input, output
+    
+    // 日志信息
+    Level   string `json:"level"`   // 日志级别: debug, info, warn, error
+    Message string `json:"message"` // 日志消息
+    Details string `json:"details"` // 详细信息JSON
+}
+
+// 任务日志列表响应
+type TaskLogListResp {
+    BaseDataInfo
+    Data TaskLogListData `json:"data"`
+}
+
+type TaskLogListData {
+    BaseListInfo
+    Data []TaskLogInfo `json:"data"`
+}
+
+// 任务日志信息响应
+type TaskLogInfoResp {
+    BaseDataInfo
+    Data TaskLogInfo `json:"data"`
+}
+
+// 创建任务日志请求
+type CreateTaskLogReq {
+    TaskId   uint64  `json:"taskId"`             // 任务ID
+    TaskType string  `json:"taskType"`           // 任务类型
+    Level    string  `json:"level"`              // 日志级别
+    Message  string  `json:"message"`            // 日志消息
+    Details  *string `json:"details,optional"`   // 详细信息
+}
+
+// 任务日志列表查询请求
+type GetTaskLogListReq {
+    PageInfo
+    
+    TaskId   *uint64 `form:"taskId,optional"`   // 任务ID过滤
+    TaskType *string `form:"taskType,optional"` // 任务类型过滤
+    Level    *string `form:"level,optional"`    // 日志级别过滤
+}
+
+@server(
+    group: task_log
+)
+service Io {
+    // 创建任务日志
+    @handler createTaskLog
+    post /task_log/create (CreateTaskLogReq) returns (TaskLogInfoResp)
+    
+    // 删除任务日志
+    @handler deleteTaskLog
+    post /task_log/delete (IDReq) returns (BaseMsgResp)
+    
+    // 获取任务日志详情
+    @handler getTaskLog
+    get /task_log/:id (IDPathReq) returns (TaskLogInfoResp)
+    
+    // 获取任务日志列表
+    @handler getTaskLogList
+    get /task_log/list (GetTaskLogListReq) returns (TaskLogListResp)
+}

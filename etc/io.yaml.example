@@ -1,0 +1,118 @@
+# Copy this file to io.yaml and configure local values or environment variables.
+# NewBee Unified-IO API Service Configuration
+Name: io.api
+Host: 0.0.0.0
+Port: 9501
+Timeout: 60000
+Mode: dev  # 开发环境模式（启用彩色日志）
+
+# Auth Configuration moved to Middleware section for centralized management
+
+Log:
+  ServiceName: ioApiLogger
+  Mode: console
+  Path: /home/data/logs/io/api
+  Encoding: json  # 保持json，由彩色Writer转换
+  Level: info
+  Compress: false
+  KeepDays: 7
+  StackCoolDownMillis: 100
+
+# Database Configuration | 数据库配置（支持环境变量覆盖 + 默认值）
+DatabaseConf:
+  Type: mysql
+  Host: 192.168.10.100
+  Port: 13306
+  DBName: newbee
+  Username: root
+  Password: "${UNIFIED_IO_API_ETC_IO_YAML_PASSWORD}"
+  MaxOpenConn: 100
+  MaxIdleConn: 25
+  ConnMaxLifetime: 3600
+  SSLMode: disable
+  MysqlConfig: "&charset=utf8mb4&loc=Local&timeout=5s"
+  CacheTime: 5
+
+# Redis Configuration | Redis配置（支持环境变量）
+RedisConf:
+  Host: 192.168.10.100:26739
+  Db: 0
+  Username: ""
+  Pass: "123456"
+  Tls: false
+  Master: ""
+
+CoreRpc:
+  Target: 127.0.0.1:9100
+  Enabled: true
+  Timeout: 8000
+  PoolSize: 10
+  MaxIdleConns: 5
+
+# Io RPC Client | IO RPC客户端
+IoRpc:
+  Target: 127.0.0.1:9500
+  Timeout: 8000
+  Enabled: true
+  PoolSize: 10
+  MaxIdleConns: 5
+
+
+I18nConf:
+  Dir: # set the path of locale if you need to load files
+
+CROSConf:
+  Address: '*'    # if it is *, allow all ip and address. e.g. http://example.com
+
+# Casbin Configuration | Casbin权限配置
+CasbinConf:
+  ModelText: |
+    [request_definition]
+    r = sub, obj, act
+
+    [policy_definition]
+    p = sub, obj, act
+
+    [role_definition]
+    g = _, _
+
+    [policy_effect]
+    e = some(where (p.eft == allow))
+
+    [matchers]
+    m = r.sub == p.sub && keyMatch2(r.obj,p.obj) && r.act == p.act
+
+Prometheus:
+  Host: 0.0.0.0
+  Port: 4502
+  Path: /metrics
+
+# Middleware Configuration: Central control for the new middleware framework
+Middleware:
+  auth:
+    accessSecret: "${UNIFIED_IO_API_ETC_IO_YAML_ACCESSSECRET}"
+    accessExpire: 86400 # 24 hours
+    enabled: true
+    skipPaths:
+      - /init/database
+  audit:
+    enabled: true
+    realIpHeader: X-Forwarded-For # 参考 docs/COMMON_AUDIT_MIDDLEWARE_GUIDE.md
+    captureResponseBody: true
+    skipPaths:
+      - /init/database
+  tenantCheck:
+    enabled: true
+    skipPaths:
+      - /init/database
+  dataPerm:
+    enabled: true
+    casbinEnabled: true  # ✅ 启用基于Casbin的统一数据权限
+    skipPaths:
+      - /init/database
+  permission:
+    enabled: true
+    skipPaths:
+      - /init/database
+      - /health
+      - /metrics
